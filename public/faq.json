@@ -1,0 +1,16 @@
+{
+    "faq": [
+        {
+            "pergunta" : "Qual a média do prazo de entrega?",
+            "resposta" : "resposta"
+        },
+        {
+            "pergunta" : "Quais formatos de pagamento disponível?",
+            "resposta" : "resposta"
+        },
+        {
+            "pergunta" : "Quais formatos de arquivos serão entregues?",
+            "resposta" : "resposta"
+        }
+    ]
+}
