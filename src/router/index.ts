@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'Evahc',
     component: HomeView
   },
   {
@@ -48,8 +48,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  next();
-  configGsap();
+  setTimeout(()=>{
+    configGsap()
+  },500)
+  next()
 })
 
 export default router

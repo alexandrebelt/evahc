@@ -8,11 +8,11 @@ export function configGsap() {
     // Pausa o ScrollTrigger existente
     setTimeout(() => {
         ScrollTrigger.getAll().forEach(trigger => {
-
             trigger.refresh();
-            console.log('tesssss')
         });
     }, 1000);
+
+    /*FOOTER*/
 
     gsap.to(".btn-orcamento-in", {
         keyframes: {

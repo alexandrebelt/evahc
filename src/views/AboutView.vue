@@ -1,5 +1,6 @@
 <template>
   <section id="sobre-banner" class="container limit">
+    <div class="white-space"></div>
     <div class="sobre-banner-container">
       <div class="sobre-banner-col">
         <div class="sobre-banner-text">
@@ -57,7 +58,46 @@
 </template>
 
 <script>
-export default {}
+import gsap from 'gsap';
+import scrollTrigger from 'gsap/all';
+gsap.registerPlugin(scrollTrigger);
+
+export default {
+  mounted(){
+    const tl = gsap.timeline()
+    gsap.set(".servicos-col", {opacity: 0})
+    gsap.set("#servicos h2", {opacity: 0})
+
+    gsap.to("#servicos h2", {
+      keyframes: {
+        "0%" : {opacity: 0},
+        "100%" : {opacity: 1}
+      },
+      duration: 2,
+      scrollTrigger: {
+        trigger: "#servicos",
+        scrub: 2,
+        start:"top 80%",
+        end:"+=300"
+      }
+    })
+
+    tl.to(".servicos-col", {
+      keyframes: {
+        "0%" : {opacity: 0, x:100},
+        "100%" : {opacity: 1, x:0}
+      },
+      stagger: 0.3,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#servicos",
+        scrub: 2,
+        start:"top 70%",
+        end:"+=300"
+      }
+    })
+  }
+}
 </script>
 
 <style lang="scss">

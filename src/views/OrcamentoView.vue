@@ -1,5 +1,8 @@
 <template>
-    <h1>Orçamento</h1>
+    <section class="container limit">
+        <div class="white-space"></div>
+        <h1>teste</h1>
+    </section>
 </template>
 
 <script>

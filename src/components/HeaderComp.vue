@@ -11,7 +11,7 @@
             </div>
         </div>
     </nav>
-    <div :class="{ 'white-gap': isGap }"></div>
+
 </template>
 
 <script>
@@ -19,13 +19,11 @@ export default {
     data() {
         return {
             isHome: false,
-            isGap: true,
         }
     },
     watch: {
         $route(to, from) {
             this.isHome = to.path !== '/'
-            this.isGap = to.path !== '/'
         }
     }
 }
@@ -36,10 +34,6 @@ export default {
     color: var(--preto) !important;
 }
 
-.white-gap {
-    display: inherit;
-    height: 100px;
-}
 
 nav {
     span sup {

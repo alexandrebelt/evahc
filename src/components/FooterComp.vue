@@ -38,9 +38,6 @@
     </footer>
 </template>
 <script>
-import gsap from 'gsap'
-import {scrollTrigger} from 'gsap/all'
-import {configGsap} from '/src/utils/gsapAll.js'
 export default {
 
 }

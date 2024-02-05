@@ -2,7 +2,7 @@
   <div id="home">
     <section id="home-banner">
       <div class="container limit">
-        <h1 id="banner-text">Design, Estratégia & Propósito-</h1>
+        <h1 class="banner-text">Design, Estratégia & Propósito-</h1>
       </div>
     </section>
     <section id="home-projs">
@@ -44,6 +44,29 @@
         </div>
       </div>
     </section>
+
+    <section id="clientes">
+      <div class="container limit">
+        <div class="">
+          <h2>Veja o que dizem nossos clientes</h2>
+        </div>
+        <div class="container-clientes">
+          <div class="box-cliente">
+            <div class="cliente-depoimento">
+              <p>‘’Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis
+                tellus. Sed dignissim, metus nec.’’</p>
+            </div>
+            <div class="cliente-nome">
+              <span>Renata Oliveira</span>
+            </div>
+            <div class="cliente-empresa">
+              <span>Renata Designer de Interiores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section id="faq">
       <div class="container limit">
@@ -94,6 +117,40 @@ export default defineComponent({
 
   methods: {
 
+    showFaq(index) {
+      if (this.activeIndex === index) {
+        this.activeIndex = null;
+      } else {
+        this.activeIndex = index
+      }
+    },
+
+
+
+    loadTags() {
+      axios.get('https://evahc.com.br/wp-json/wp/v2/tags')
+        .then((response) => {
+          response.data.forEach((tag) => {
+            this.tags[tag.id] = tag.name
+          })
+        })
+    },
+    getTagName(tagId) {
+      return this.tags[tagId]
+    },
+
+    loadCategories() {
+      axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
+        .then((response) => {
+          response.data.forEach((category) => {
+            this.categories[category.id] = category.name;
+          })
+        })
+    },
+    getCategoryName(categoryId) {
+      return this.categories[categoryId]
+    },
+
     initScrollLetters() {
       // Scrolling Letters Both Direction
       // https://codepen.io/GreenSock/pen/rNjvgjo
@@ -102,7 +159,7 @@ export default defineComponent({
 
       let direction = 1; // 1 = forward, -1 = backward scroll
 
-      const roll1 = roll("#banner-text", { duration: 18 }),
+      const roll1 = roll(".banner-text", { duration: 18 }),
         scroll = ScrollTrigger.create({
           trigger: document.querySelector('[data-scroll-container]'),
           onUpdate(self) {
@@ -141,46 +198,11 @@ export default defineComponent({
         return tl;
       }
 
-    },
-
-
-    showFaq(index) {
-      if (this.activeIndex === index) {
-        this.activeIndex = null;
-      } else {
-        this.activeIndex = index
-      }
-    },
-
-
-
-    loadTags() {
-      axios.get('https://evahc.com.br/wp-json/wp/v2/tags')
-        .then((response) => {
-          response.data.forEach((tag) => {
-            this.tags[tag.id] = tag.name
-          })
-        })
-    },
-    getTagName(tagId) {
-      return this.tags[tagId]
-    },
-
-    loadCategories() {
-      axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
-        .then((response) => {
-          response.data.forEach((category) => {
-            this.categories[category.id] = category.name;
-          })
-        })
-    },
-    getCategoryName(categoryId) {
-      return this.categories[categoryId]
     }
 
   },
 
-  mounted() {
+  created() {
     axios.get('metodologia.json') // Corrigi a URL da chamada da API
       .then((response) => (this.mets = response.data.metodologia))
       .catch((error) => console.error(error));
@@ -201,7 +223,9 @@ export default defineComponent({
       })
     setTimeout(() => {
 
-
+      gsap.set("#nav-links", {
+        y: 0,
+      });
       gsap.set(".metodologia-descricao", {
         opacity: 0,
         x: 50
@@ -225,31 +249,34 @@ export default defineComponent({
         scrollTrigger: {
           trigger: "body",
           scrub: true,
-          start: "0% 0%",
-          end: "+=400"
+          start: "top 0%",
+          end: "+=200"
         }
       })
-      tl.to("#banner-text", {
-        y: -100,
-        scrollTrigger: {
-          trigger: "body",
-          scrub: true,
-          start: "0% 0%",
-          end: "+=400"
-        }
-      })
-      tl.to('#home-banner', {
-        keyframes: {
-          "0%": { y: 0 },
-          "100%": { y: 100 },
-        }, scrollTrigger: {
-          trigger: "#home-banner",
-          scrub: true,
-          start: "top top",
-          end: "bottom top",
+      gsap.utils.toArray(".banner-text").forEach((text) => {
+        tl.to(text, {
+          y: -200,
+          scrollTrigger: {
+            trigger: "body",
+            scrub: true,
+            start: "0% 0%",
+            end: "100%"
+          }
+        })
+      }),
 
-        }
-      })
+        tl.to('#home-banner', {
+          keyframes: {
+            "0%": { y: 0 },
+            "100%": { y: 100 },
+          }, scrollTrigger: {
+            trigger: "#home-banner",
+            scrub: true,
+            start: "top top",
+            end: "bottom top",
+
+          }
+        })
       gsap.utils.toArray(".project-cover").forEach((panel, i, array) => {
         tl.to(panel, {
           keyframes: {
@@ -259,7 +286,7 @@ export default defineComponent({
           },
           scrollTrigger: {
             trigger: panel,
-            scrub: 3,
+            scrub: 2,
             start: `70% center+=${100 * i}`,
             end: `+=${1000 * (array.length - i) - 50}`,
             pin: true,
@@ -278,7 +305,7 @@ export default defineComponent({
           scrub: 1,
           trigger: ".projects",
           start: "top top",
-          end: "+=2500"
+          end: "+=2000"
 
         }
       })
@@ -348,7 +375,7 @@ export default defineComponent({
           end: "center 60%",
         }
       })
-    }, 500);
+    }, 1000);
   }
 
 });
@@ -398,8 +425,8 @@ export default defineComponent({
 #home-projs {
   position: relative;
   height: 180vh;
-  min-height: 3500px;
-  max-height: 3500px;
+  min-height: 2900px;
+  max-height: 3200px;
   background-color: var(--branco);
 
   z-index: 999;
@@ -509,6 +536,49 @@ export default defineComponent({
   }
 }
 
+#clientes {
+  h2 {
+    max-width: 360px;
+    margin-bottom: 60px;
+  }
+
+  .container-clientes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .box-cliente {
+      flex-basis: 40%;
+      border: 1px solid var(--cinza);
+      border-radius: 20px;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .cliente-depoimento {
+        color: var(--cinza);
+        font-weight: 500;
+        flex-basis: 100%;
+        margin-bottom: 40px;
+
+        p {
+          line-height: 1.5em !important;
+        }
+      }
+
+      .cliente-nome {
+        flex-basis: 50%;
+        font-size: 14px;
+      }
+
+      .cliente-empresa {
+        flex-basis: 50%;
+        color: var(--cinza-quase-claro);
+        font-size: 14px;
+      }
+    }
+  }
+}
 
 #faq .container {
   display: flex;
@@ -552,5 +622,4 @@ export default defineComponent({
 
 .mostraFaq {
   max-height: 1000px !important;
-}
-</style>
+}</style>

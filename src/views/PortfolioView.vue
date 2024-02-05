@@ -1,5 +1,6 @@
 <template>
     <section id="portfolio" class="container limit">
+        <div class="white-space"></div>
         <ul class="portfolio-projects">
             <li class="projects-individual" v-for="proj in projs" :key="proj.id">
                 <router-link :to="{ name: 'Projeto', params: { projectId: proj.id } }">
@@ -25,7 +26,10 @@
 
 <script lang="js">
 import axios from 'axios';
+import gsap from 'gsap';
+import scrollTrigger from 'gsap/all'
 import { defineComponent } from 'vue';
+gsap.registerPlugin(scrollTrigger);
 
 export default defineComponent({
     data() {
@@ -63,6 +67,20 @@ export default defineComponent({
         }
     },
     mounted() {
+        setTimeout(() => {
+            gsap.set(".projects-individual", {
+                opacity: 0,
+                scale: 0,
+            });
+            gsap.to(".projects-individual", {
+                opacity:1,
+                scale:1,
+                duration: 0.5,
+                stagger: 0.2
+            })
+        }, 400);
+    },
+    created() {
         axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
             .then((response) => {
                 this.projs = response.data

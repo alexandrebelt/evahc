@@ -1,9 +1,9 @@
 <template>
   <!--COMPONENTE-->
+  <TransitionView :routeName="toName" v-if="showTransition" />
+
   <HeaderComp />
-
   <router-view />
-
   <FooterComp />
 </template>
 
@@ -11,6 +11,7 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import FooterComp from '/src/components/FooterComp.vue';
 import HeaderComp from '/src/components/HeaderComp.vue';
+import TransitionView from '/src/components/TransitionView.vue';
 import { defineComponent } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -20,19 +21,35 @@ gsap.registerPlugin(ScrollTrigger)
 export default defineComponent({
   components: {
     FooterComp,
-    HeaderComp
+    HeaderComp,
+    TransitionView
   },
   data() {
-    return {}
+    return {
+      showTransition: false,
+      toName: ''
+    }
   },
+
   mounted() {
-    configGsap();
+    setTimeout(() => {
+      configGsap();
+    }, 1000);
     const scroll = new LocomotiveScroll({
       //@ts-expect-error - Reconhece de qualquer maneira o el
       el: document.querySelector("#app"),
       smooth: true
     });
   },
+  /*watch: {
+    $route(to, from) {
+      this.showTransition = true;
+      this.toName = `${to.name}`
+      setTimeout(() => {
+        this.showTransition = false;
+      }, 3000)
+    }
+  }*/
 })
 </script>
 
@@ -66,6 +83,7 @@ export default defineComponent({
   --overused: "Overused";
 }
 
+
 html,
 body {
   background-color: var(--branco);
@@ -74,7 +92,9 @@ body {
   font-family: var(--urbanist);
   font-size: 16px;
 }
-
+section{
+  min-height: 20vh
+}
 #app {
   font-family: var(--urbanist);
   -webkit-font-smoothing: antialiased;
@@ -90,6 +110,9 @@ body {
   max-width: var(--container-width);
   padding: 80px 20px;
   /*width: 100%;*/
+}
+.white-space{
+  margin-top:100px;
 }
 
 p {
