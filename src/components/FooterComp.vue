@@ -4,16 +4,18 @@
             <div class="footer-contato">
                 <h2>Vamos fazer um projeto
                     extraordinário juntos?</h2>
-                <div class="btn-orcamento">
-                    <div class="btn-orcamento-in">
-                        <router-link to="/orcamento">Solicitar Orçamento</router-link>
+                <div class="btn-orcamento-wrapper">
+                    <div class="btn-orcamento ">
+                        <div class="btn-orcamento-in magnetic">
+                            <router-link class="btn-text" to="/orcamento">Solicitar Orçamento</router-link>
+                        </div>
                     </div>
                 </div>
-                <div class="btn-contato">
+                <div class="btn-contato ">
                     <a href="mailto:contato@evahc.com.br" target="_blank">
                         contato@evahc.com.br
                     </a>
-                    <a href="#" target="=_blank">+55 79 9 9999-9999</a> <!--ADICIONAR DEPOIS-->
+                    <a href="#" target="_blank">+55 79 9 9999-9999</a> <!--ADICIONAR DEPOIS-->
                 </div>
             </div>
             <div class="credits-social">
@@ -38,40 +40,86 @@
     </footer>
 </template>
 <script>
+import { TweenMax, Elastic, Power4 } from 'gsap'
+
 export default {
 
+    mounted() {
+        var magnets = document.querySelectorAll('.magnetic')
+        var strength = 50
+        var textStrength = 30
+
+        magnets.forEach((magnet) => {
+            magnet.addEventListener('mousemove', function (event) {
+                var magnetButton = event.currentTarget
+                var bounding = magnetButton.getBoundingClientRect()
+                var magneticText = magnet.querySelector(".btn-text")
+
+                TweenMax.to(magnetButton, 1, {
+                    x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,
+                    y: (((event.clientY - bounding.top) / magnetButton.offsetHeight) - 0.5) * strength,
+                    ease: Power4.easeOut
+                })
+                if (magneticText) {
+
+                    TweenMax.to(magneticText, 1, {
+                        x: (((event.clientX - bounding.left) / magneticText.offsetWidth) - 0.5) * textStrength,
+                        y: (((event.clientY - bounding.top) / magneticText.offsetHeight) - 0.5) * textStrength,
+                        ease: Power4.easeOut
+                    })
+                }
+            });
+            magnet.addEventListener('mouseout', function (event) {
+                TweenMax.to(event.currentTarget, 1, { x: 0, y: 0, ease: Elastic.easeOut })
+                TweenMax.to(magnet.querySelector(".btn-text"), 1, { x: 0, y: 0, ease: Elastic.easeOut })
+            });
+        });
+
+
+
+    }
 }
 </script>
 
 <style lang="scss">
-body{
+body {
     overflow-y: hidden;
 }
+
+.btn-orcamento-in:hover {
+    background-color: var(--cinza) !important;
+    color: var(--cinza-claro) !important;
+}
+
 footer {
     background: var(--preto);
     color: var(--branco);
     position: relative;
     z-index: 9997;
-    
+
 
     #footer {
         padding: 100px 30px 30px;
         max-width: var(--container-width);
-        
+
 
         .footer-contato {
             max-width: 1230px;
             margin: 0 auto;
             margin-bottom: 100px;
-            
 
-            .btn-orcamento {
+            .btn-orcamento-wrapper {
                 height: 0;
                 border-top: 1px solid var(--cinza);
                 position: relative;
                 margin: 60px 0;
+            }
+
+            .btn-orcamento {
+
 
                 .btn-orcamento-in {
+                    transition: background-color 0.2s;
                     position: absolute;
                     right: 10%;
                     aspect-ratio: 1;
@@ -79,14 +127,14 @@ footer {
                     background: var(--branco);
                     display: flex;
                     align-items: center;
-                    top: -103px !important;
+                    top: -103px;
                     border-radius: 100px;
                     color: var(--preto);
 
                     a {
                         max-width: 100px;
                         text-align: center;
-                        padding: 50px;
+                        padding: 75px 50px;
                     }
                 }
             }

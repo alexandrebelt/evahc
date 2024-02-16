@@ -1,9 +1,9 @@
 <template>
     <section id="portfolio" class="container limit">
-        <div class="white-space"></div>
+
         <ul class="portfolio-projects">
             <li class="projects-individual" v-for="proj in projs" :key="proj.id">
-                <router-link :to="{ name: 'Projeto', params: { projectId: proj.id } }">
+                <router-link :to="{ name: 'Projeto', params:{projTitle:proj.title.rendered, projectId: proj.id } }">
                     <div class="project-tag">
                         <h3>{{ proj.title.rendered }}</h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">
@@ -40,6 +40,7 @@ export default defineComponent({
         }
     },
     methods: {
+
         loadCategories() {
             axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
                 .then((response) => {
@@ -64,34 +65,46 @@ export default defineComponent({
         },
         getTagName(tagId) {
             return this.tags[tagId];
-        }
+        },
+        async carregaPortfolio() {
+            try {
+                axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
+                    .then((response) => {
+                        this.projs = response.data
+                        this.loadCategories();
+                        this.loadTags();
+                    })
+                    .catch((error) => console.log(error))
+            } catch (error) {
+                console.log(error)
+            }
+        },
     },
     mounted() {
-        setTimeout(() => {
+
+        this.$nextTick(() => {
+            gsap.to(".projects-individual", {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: "power4"
+            })
+        })
+    },
+    created() {
+        this.carregaPortfolio();
+        this.$nextTick(() => {
             gsap.set(".projects-individual", {
                 opacity: 0,
                 scale: 0,
             });
-            gsap.to(".projects-individual", {
-                opacity:1,
-                scale:1,
-                duration: 0.5,
-                stagger: 0.2
-            })
-        }, 400);
-    },
-    created() {
-        axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
-            .then((response) => {
-                this.projs = response.data
-                this.loadCategories();
-                this.loadTags();
-            })
-            .catch((error) => console.log(error))
+
+        })
+
     }
 })
 </script>
-<style>
+<style lang="scss">
 #portfolio li {
     list-style: none;
 }
@@ -99,19 +112,21 @@ export default defineComponent({
 #portfolio .portfolio-projects {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    grid-gap: 20px;
+    row-gap: 20px;
     justify-content: space-between;
 }
 
 #portfolio .projects-individual {
     aspect-ratio: 3/2;
-    flex-basis: 49%;
+    flex-basis: calc(50% - 10px);
     position: relative;
+    height: 100%;
 
     .project-tag {
         position: absolute;
-        top: 10px !important;
-        left: 10px !important;
+        top: 10px;
+        left: 10px;
         font-size: 12px;
         display: flex;
         flex-direction: row;
@@ -132,7 +147,7 @@ export default defineComponent({
         flex-direction: row;
         gap: 10px;
         position: absolute;
-        top: 10px !important;
+        top: 10px;
         right: 10px !important;
         font-size: 13px;
 

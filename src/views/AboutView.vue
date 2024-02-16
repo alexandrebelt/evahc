@@ -1,6 +1,5 @@
 <template>
   <section id="sobre-banner" class="container limit">
-    <div class="white-space"></div>
     <div class="sobre-banner-container">
       <div class="sobre-banner-col">
         <div class="sobre-banner-text">
@@ -77,7 +76,7 @@ export default {
       scrollTrigger: {
         trigger: "#servicos",
         scrub: 2,
-        start:"top 80%",
+        start:"top 70%",
         end:"+=300"
       }
     })

@@ -16,7 +16,7 @@
                 <img class="individual-project-cover"
                     v-if="proj['_embedded'] && proj['_embedded']['wp:featuredmedia'] && proj['_embedded']['wp:featuredmedia'][0].source_url"
                     :src="proj['_embedded']['wp:featuredmedia'][0].source_url" :alt="proj.title.rendered + '_thumb'">
-                <p v-html="proj.content.rendered"></p>
+                <p class="post-content" v-html="proj.content.rendered"></p>
             </div>
         </section>
 
@@ -76,6 +76,9 @@ export default {
         flex-direction: row;
         justify-content: space-between;
         .post-top-col {
+            span, h3{
+                font-size: 12px;
+            }
         }
 
         .post-categories {
@@ -85,12 +88,12 @@ export default {
             padding:20px;
             top: 10px !important;
             right: 10px !important;
-            font-size: 13px;
+            
 
             h3 {
                 background: rgba(0, 0, 0, 0.4);
                 color: var(--branco);
-                font-weight: 400;
+                font-weight: 500;
                 padding: 5px 10px;
                 border-radius: 20px;
             }

@@ -1,9 +1,14 @@
 <template>
   <!--COMPONENTE-->
-  <TransitionView :routeName="toName" v-if="showTransition" />
 
   <HeaderComp />
-  <router-view />
+  <transition name="slide">
+    <TransitionView :routeName="toName" v-if="showTransition" />
+  </transition>
+  <transition name="fade" mode="out-in">
+    <router-view />
+  </transition>
+
   <FooterComp />
 </template>
 
@@ -15,7 +20,6 @@ import TransitionView from '/src/components/TransitionView.vue';
 import { defineComponent } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { configGsap } from './utils/gsapAll.js';
 gsap.registerPlugin(ScrollTrigger)
 
 export default defineComponent({
@@ -32,28 +36,27 @@ export default defineComponent({
   },
 
   mounted() {
-    setTimeout(() => {
-      configGsap();
-    }, 1000);
     const scroll = new LocomotiveScroll({
       //@ts-expect-error - Reconhece de qualquer maneira o el
-      el: document.querySelector("#app"),
+      el: document.querySelector("[router-view]"),
       smooth: true
     });
   },
-  /*watch: {
+  watch: {
     $route(to, from) {
       this.showTransition = true;
       this.toName = `${to.name}`
       setTimeout(() => {
         this.showTransition = false;
-      }, 3000)
+      }, 2000)
     }
-  }*/
+  }
 })
 </script>
 
 <style lang="scss">
+@import url('Responsive.scss');
+
 @font-face {
   font-family: "Urbanist";
   src: url('/src/assets/fonts/Urbanist-VariableFont_wght.ttf') format('truetype'),
@@ -91,10 +94,13 @@ body {
   overflow-x: hidden;
   font-family: var(--urbanist);
   font-size: 16px;
+  font-display: swap;
 }
-section{
+
+section {
   min-height: 20vh
 }
+
 #app {
   font-family: var(--urbanist);
   -webkit-font-smoothing: antialiased;
@@ -110,9 +116,6 @@ section{
   max-width: var(--container-width);
   padding: 80px 20px;
   /*width: 100%;*/
-}
-.white-space{
-  margin-top:100px;
 }
 
 p {
@@ -134,6 +137,37 @@ h2 {
 h4 {
   font-size: 34px;
   font-weight: 500;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 1s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-enter-to,
+.slide-leave {
+  transform: translateX(0);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+
 }
 </style>
 

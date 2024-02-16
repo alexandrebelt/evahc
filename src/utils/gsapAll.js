@@ -10,11 +10,11 @@ export function configGsap() {
         ScrollTrigger.getAll().forEach(trigger => {
             trigger.refresh();
         });
-    }, 1000);
+    }, 1200);
 
     /*FOOTER*/
 
-    gsap.to(".btn-orcamento-in", {
+    gsap.to(".btn-orcamento", {
         keyframes: {
             "0%": { x: -100 },
             "100%": { x: 0 },
@@ -39,3 +39,73 @@ export function configGsap() {
         }
     })
 }
+
+export function initGsap() {
+    const tl = gsap.timeline()
+    const responsiveBanner = () => {
+      if (window.innerWidth <= 850 || window.innerHeight <= 700) {
+        return "1800px"
+      } else {
+        return "2600px"
+      }
+    }
+
+    gsap.set("#home-banner", {y:0})
+
+    gsap.utils.toArray(".banner-text").forEach((text) => {
+
+      tl.to(text, {
+        y: -200,
+        scrollTrigger: {
+          trigger: "body",
+          scrub: true,
+          start: "0% 0%",
+          end: "100%"
+        }
+      })
+    }),
+    gsap.from("#home-banner", {y:0})
+      tl.to('#home-banner', {
+          y:100,
+          scrollTrigger: {
+          trigger: "body",
+          scrub: true,
+          start: "top top",
+          end: "+=1000",
+        }
+      })
+    gsap.utils.toArray(".project-cover").forEach((panel, i, array) => {
+      tl.to(panel, {
+        keyframes: {
+          "0%": { scale: 1, },
+          "80%": { scale: 0.8, },
+          "100%": { scale: 0.8, },
+        },
+        scrollTrigger: {
+          trigger: panel,
+          scrub: 2,
+          start: `70% center+=${100 * i}`,
+          end: `+=${1000 * (array.length - i) - 50}`,
+          pin: true,
+          pinSpacing: false,
+        },
+
+      })
+    })
+
+    tl.to(".projects", {
+
+      keyframes: {
+        "0%": { opacity: 1 },
+        "90%": { opacity: 1 },
+        "100%": { opacity: 0 }
+      },
+      scrollTrigger: {
+        scrub: true,
+        trigger: ".projects",
+        start: "top bottom",
+        end: responsiveBanner()
+
+      }
+    })
+  }
