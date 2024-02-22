@@ -1,13 +1,18 @@
 <template>
   <!--COMPONENTE-->
-
-  <HeaderComp />
-  <transition name="slide">
-    <TransitionView :routeName="toName" v-if="showTransition" />
-  </transition>
   <transition name="fade" mode="out-in">
-    <router-view />
+    <HeaderComp />
   </transition>
+
+  <TransitionView :routeName="toName" :projectTitle="$route.params.projectName" v-if="showTransition" />
+
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <div v-if="carregaConteudo">
+        <component :is="Component" />
+      </div>
+    </transition>
+  </router-view>
 
   <FooterComp />
 </template>
@@ -19,10 +24,13 @@ import HeaderComp from '/src/components/HeaderComp.vue';
 import TransitionView from '/src/components/TransitionView.vue';
 import { defineComponent } from 'vue';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger} from "gsap/all";
+import { initMagnets } from './utils/magneticElements.js';
+import { configGsap, initGsap } from './utils/gsapAll';
 gsap.registerPlugin(ScrollTrigger)
 
 export default defineComponent({
+  
   components: {
     FooterComp,
     HeaderComp,
@@ -31,6 +39,7 @@ export default defineComponent({
   data() {
     return {
       showTransition: false,
+      carregaConteudo: true,
       toName: ''
     }
   },
@@ -41,11 +50,18 @@ export default defineComponent({
       el: document.querySelector("[router-view]"),
       smooth: true
     });
+
+    initMagnets();
+
   },
   watch: {
     $route(to, from) {
       this.showTransition = true;
+      this.carregaConteudo = false;
       this.toName = `${to.name}`
+      setTimeout(() => {
+        this.carregaConteudo = true;
+      }, 1000);
       setTimeout(() => {
         this.showTransition = false;
       }, 2000)
@@ -139,35 +155,14 @@ h4 {
   font-weight: 500;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 1s;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(-100%);
-}
-
-.slide-enter-to,
-.slide-leave {
-  transform: translateX(0);
-}
-
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.5s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave {
-  opacity: 1;
-
 }
 </style>
 

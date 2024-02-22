@@ -2,7 +2,7 @@
     <section id="home-projs">
         <div class="projects container limit">
             <div class="project-cover" v-for="proj in projs" :key="proj.id">
-                <router-link :to="{ name: 'Projeto', params: { projectId: proj.id } }">
+                <router-link :to="{ name: 'Project', params: {projectName: proj.title.rendered.toLowerCase().replace(/\s+/g, '-'), projectId: proj.id } }">
                     <div class="project-tags">
                         <h3>{{ proj.title.rendered }}</h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">{{ getTagName(tagId) }}</h3>
@@ -23,8 +23,8 @@
 </template>
 
 <script>
+import { configGsap, initGsap } from '@/utils/gsapAll'
 import axios from 'axios'
-import { initGsap } from '@/utils/gsapAll'
 export default {
     data() {
         return {
@@ -60,89 +60,89 @@ export default {
             return this.categories[categoryId]
         },
     },
-    created() {
+    beforeCreate() {
         axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
             .then((response) => {
                 this.projs = response.data.slice(0, 3);
                 this.loadTags();
                 this.loadCategories();
-                setTimeout(() => {
-                    initGsap();
-                }, 1000);
             })
-    }
+    },
 }
 </script>
 
 <style lang="scss">
 #home-projs {
-  position: relative;
-  height: 180vh;
-  min-height: 3300px;
-  max-height: 3300px;
-  background-color: var(--branco);
-  z-index: 999;
+    position: relative;
+    height: 180vh;
+    min-height: 3300px;
+    max-height: 3300px;
+    background-color: var(--branco);
+    z-index: 999;
 }
 
 .projects {
-  position: relative;
+    position: relative;
 }
 
 .project-cover {
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-bottom: 50vh;
-  width: 100%;
-  aspect-ratio: 10/5;
-  max-height: 70vh;
-  position: relative;
-
-  img {
-
-    width: 100% !important;
-  }
-
-  .project-tags {
-    position: absolute;
-    top: 20px;
-  }
-
-  .project-tags {
-    position: absolute;
-    top: 10px !important;
-    left: 10px !important;
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
     border-radius: 20px;
-  }
+    margin: 0 auto;
+    margin-bottom: 50vh;
+    width: 100%;
+    aspect-ratio: 10/5;
+    max-height: 70vh;
+    position: relative;
 
-  .project-category ul {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    position: absolute;
-    top: 10px !important;
-    right: 10px !important;
-    font-size: 12px;
+    img {
 
-    li {
-      background: rgba(0, 0, 0, 0.2);
-      color: var(--branco);
-      font-family: var(--overused);
-      list-style: none;
-      padding: 5px 10px;
-      border-radius: 20px;
+        width: 100% !important;
     }
-  }
+
+    .project-tags {
+        position: absolute;
+        top: 20px;
+    }
+
+    .project-tags {
+        position: absolute;
+        top: 10px !important;
+        left: 10px !important;
+        font-size: 12px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        :nth-of-type(2){
+            font-weight: 500;
+        }
+
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 20px;
+    }
+
+    .project-category ul {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        position: absolute;
+        top: 10px !important;
+        right: 10px !important;
+        font-size: 12px;
+
+        li {
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--branco);
+            font-family: var(--overused);
+            list-style: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+    }
 }
 </style>

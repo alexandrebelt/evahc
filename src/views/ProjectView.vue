@@ -33,7 +33,7 @@
 import axios from 'axios';
 
 export default {
-    props: ['projectId'],
+    props: ['projectId', 'projectName'],
     data() {
         return {
             proj: null,

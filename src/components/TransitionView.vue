@@ -1,5 +1,8 @@
 <template>
-    <div class="routeView">
+    <div v-if="$route.name === 'Project'" class="routeView">
+        <h2 class="text-route">{{ projectTitle.replace(/-/g, ' ') }}</h2>
+    </div>
+    <div v-else class="routeView">
         <h2 class="text-route">{{ routeName }}</h2>
     </div>
 </template>
@@ -8,39 +11,39 @@
 import gsap from 'gsap'
 export default {
     props: [
-        'routeName'
+        'routeName',
+        'projectTitle'
     ],
 
     mounted() {
         const rview = ".routeView";
         const tl = gsap.timeline();
 
- //       tl.to(rview, {
- //           keyframes: {
- //               "0%": { x: "-110vw" },
- //               "100%": { x: 0 }
- //           },
- //           duration: 1.5,
- //           ease: "power4"
- //       })
- //       tl.to(rview, {
- //           keyframes: {
- //               "0%": { x: 0 },
- //               "100%": { x: "-110vw" }
- //           },
- //           ease: "power4",
- //           duration: 1,
- //       })
-
-  //      gsap.from(".text-route", {
-  //          x: -100,
-  //      })
-  //      gsap.to(".text-route", {
-  //          x: 50,
-  //          ease: "power4.out",
-  //          duration: 2
-  //      })
-  }
+        tl.to(rview, {
+            keyframes: {
+                "0%": { x: "-110vw" },
+                "100%": { x: 0 }
+            },
+            duration: 1.5,
+            ease: "power4"
+        })
+        tl.to(rview, {
+            keyframes: {
+                "0%": { x: 0 },
+                "100%": { x: "-110vw" }
+            },
+            ease: "power4",
+            duration: 1,
+        })
+        gsap.from(".text-route", {
+            x: -100,
+        })
+        gsap.to(".text-route", {
+            x: 50,
+            ease: "power4.out",
+            duration: 2
+        })
+    }
 
 }
 </script>
@@ -59,8 +62,9 @@ export default {
         text-transform: uppercase;
         font-size: 48px;
         font-weight: 500;
-        &:before{
-            content:"• "
+
+        &:before {
+            content: "• "
         }
     }
 

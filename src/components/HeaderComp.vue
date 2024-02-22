@@ -2,15 +2,16 @@
     <nav id="nav">
         <div id="nav-links" :class="{ 'router-color': isHome }">
             <div class="nav-col">
-                <router-link to="/"><span>Evahc Studio<sup>©</sup></span></router-link>
+                <router-link class="magnetic-small" to="/"><span>Evahc Studio<sup>©</sup></span></router-link>
             </div>
             <div v-if="isMobile">
                 <MenuMobile />
             </div>
             <div v-else class="nav-col">
-                <router-link to="/portfolio">Portfólio</router-link>
-                <router-link to="/sobre-nos">Sobre Nós</router-link>
-                <router-link to="/orcamento">Orçamento</router-link>
+                <router-link class="magnetic-small" to="/portfolio">Portfólio</router-link>
+                <router-link class="magnetic-small" to="/sobre-nos">Sobre Nós</router-link>
+                <router-link class="magnetic-small" :class="{ 'btn-fundo-cinza': !isHome }"
+                    to="/orcamento">Orçamento</router-link>
             </div>
         </div>
     </nav>
@@ -21,8 +22,9 @@ import MenuMobile from '../components/MenuMobile.vue'
 import gsap from 'gsap'
 import scrollTrigger from 'gsap/all'
 gsap.registerPlugin(scrollTrigger);
-
+import { TweenMax, Elastic, Power4 } from 'gsap'
 export default {
+    
     components: {
         MenuMobile
     },
@@ -33,6 +35,7 @@ export default {
         }
     },
     mounted() {
+        
         gsap.to("#nav-links", {
             y: -100,
             scrollTrigger: {
@@ -73,7 +76,7 @@ export default {
 
 
 nav {
-    
+
     z-index: 9999;
     position: absolute;
     width: 100%;
@@ -113,7 +116,14 @@ nav {
         color: inherit;
         text-decoration: none;
         align-self: center;
+        transition: background-color 0.5s;
 
+    }
+
+    .btn-fundo-cinza {
+        background: var(--cinza-quase-claro);
+        padding: 5px 12px;
+        border-radius: 50px;
     }
 }
 

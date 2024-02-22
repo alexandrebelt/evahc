@@ -1,9 +1,20 @@
 @media(max-width:1050px) {
+      
     footer {
         .btn-orcamento-wrapper {
             margin: 120px 0 !important;
         }
     }
+}
+
+@media(max-width:1050px) and (min-width:751px){
+    .sobre-banner-container .sobre-banner-col:nth-of-type(1) {
+        width: 70%;
+        min-width: 390px;
+        .sobre-banner-text {
+            padding: 30px !important;
+          }
+      }
 }
 
 @media(max-width:850px){

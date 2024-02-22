@@ -11,11 +11,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn-contato ">
-                    <a href="mailto:contato@evahc.com.br" target="_blank">
-                        contato@evahc.com.br
-                    </a>
-                    <a href="#" target="_blank">+55 79 9 9999-9999</a> <!--ADICIONAR DEPOIS-->
+                <div class="btn-contato">
+
+                        <a class="magnetic-small" href="mailto:contato@evahc.com.br" target="_blank">
+                            contato@evahc.com.br
+                        </a>
+                        <a class="magnetic-small" href="#" target="_blank">+55 79 9 9999-9999</a> <!--ADICIONAR DEPOIS-->
                 </div>
             </div>
             <div class="credits-social">
@@ -30,9 +31,9 @@
                 <div class="credits-social-col">
                     <p>Redes Sociais</p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/evahc/" target="_blank">Instagram</a>
-                        <a href="https://www.linkedin.com/company/evahc" target="_blank">Linkedin</a>
-                        <a href="https://www.behance.net/evahc" target="_blank">Behance</a>
+                        <a class="magnetic-small" href="https://www.instagram.com/evahc/" target="_blank">Instagram</a>
+                        <a class="magnetic-small" href="https://www.linkedin.com/company/evahc" target="_blank">Linkedin</a>
+                        <a class="magnetic-small" href="https://www.behance.net/evahc" target="_blank">Behance</a>
                     </div>
                 </div>
             </div>

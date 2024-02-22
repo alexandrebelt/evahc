@@ -4,8 +4,9 @@ import OrcamentoView from '../views/OrcamentoView.vue'
 import PortfolioView from '@/views/PortfolioView.vue'
 import ProjectView from '@/views/ProjectView.vue'
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import {configGsap} from '../utils/gsapAll'
 import { gsap } from "gsap";
+import AboutView from '@/views/AboutView.vue'
+import { configGsap, initGsap } from '@/utils/gsapAll'
 gsap.registerPlugin(ScrollTrigger);
 
 const routes: Array<RouteRecordRaw> = [
@@ -27,16 +28,16 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/sobre-nos',
     name: 'Sobre Nós',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView
   },
   {
-    path: '/portfolio/:projectId',
-    name: 'Projeto',
+    path: '/portfolio/:projectId/:projectName',
+    name: 'Project',
     component: ProjectView,
-    props: true
+    props: route => ({
+      projectName: route.params.projectName,
+      projectId: route.params.projectId
+    })
   }
 
 
@@ -47,10 +48,12 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from) => {
-  setTimeout(()=>{
+router.beforeEach((to, from, next) => {
+  setTimeout(() => {
     configGsap()
-  },1000)
+    initGsap()
+  }, 2000);
+  next()
 })
 
 export default router

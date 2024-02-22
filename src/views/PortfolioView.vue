@@ -3,7 +3,12 @@
 
         <ul class="portfolio-projects">
             <li class="projects-individual" v-for="proj in projs" :key="proj.id">
-                <router-link :to="{ name: 'Projeto', params:{projTitle:proj.title.rendered, projectId: proj.id } }">
+                <router-link :to="{
+                    name: 'Project', params: {
+                        projectName: proj.title.rendered.toLowerCase().replace(/\s+/g, '-'),
+                        projectId: proj.id
+                    }
+                }">
                     <div class="project-tag">
                         <h3>{{ proj.title.rendered }}</h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">
@@ -81,26 +86,27 @@ export default defineComponent({
         },
     },
     mounted() {
-
-        this.$nextTick(() => {
+        setTimeout(() => {
+            gsap.from(".projects-individual", {
+                opacity: 0,
+                scale: 0
+            })
             gsap.to(".projects-individual", {
                 opacity: 1,
                 scale: 1,
                 duration: 1,
                 ease: "power4"
             })
-        })
+        }, 500)
     },
     created() {
         this.carregaPortfolio();
         this.$nextTick(() => {
             gsap.set(".projects-individual", {
                 opacity: 0,
-                scale: 0,
-            });
-
+                scale: 0
+            })
         })
-
     }
 })
 </script>
