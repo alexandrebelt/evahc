@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { configGsap, initGsap } from '@/utils/gsapAll'
 import axios from 'axios'
 export default {
     data() {
@@ -136,7 +135,7 @@ export default {
         font-size: 12px;
 
         li {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             color: var(--branco);
             font-family: var(--overused);
             list-style: none;

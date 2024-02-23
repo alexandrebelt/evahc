@@ -101,11 +101,13 @@ export default defineComponent({
     h2 {
         max-width: 670px;
         margin-bottom: 40px;
+        font-size: 48px;
     }
 
     h5 {
         margin-bottom: 20px;
         font-size: 15px !important;
+        font-weight: 500;
     }
 }
 
@@ -113,16 +115,24 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     max-width: 800px;
-
+    select{
+        background-image:url('/src/assets/seta.png') !important;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-size: 13px;
+        background-position: right;
+    }
     input,
     textarea,
     option,
     select {
+        appearance: none;
+        border-radius: 0;
         background-color: var(--branco);
         resize: none;
         max-height: 300px;
         border: 0;
-        border-bottom: 1px solid var(--cinza-claro);
+        border-bottom: 1px solid rgba(0,0,0, 0.3);
         color: var(--cinza) !important;
         font-family: var(--urbanism);
         font-size: 18px;
@@ -130,7 +140,7 @@ export default defineComponent({
         padding-bottom: 10px;
 
         &::placeholder {
-            opacity: 0.5 !important;
+            opacity: 1 !important;
 
         }
 

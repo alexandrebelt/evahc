@@ -37,7 +37,6 @@ export default {
         let btnAction = document.querySelectorAll(".btn-action")
         const tl = gsap.timeline();
 
-        gsap.set("html", { overflow: 'hidden' })
         gsap.set(containerTitle, { opacity: 0 })
         gsap.set(container, { x: 1000 })
         gsap.set(mobileLinks, { x: 500, })

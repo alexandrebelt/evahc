@@ -26,7 +26,6 @@ import { defineComponent } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger} from "gsap/all";
 import { initMagnets } from './utils/magneticElements.js';
-import { configGsap, initGsap } from './utils/gsapAll';
 gsap.registerPlugin(ScrollTrigger)
 
 export default defineComponent({

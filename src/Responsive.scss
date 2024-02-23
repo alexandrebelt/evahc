@@ -1,225 +1,228 @@
-@media(max-width:1050px) {
-      
-    footer {
-        .btn-orcamento-wrapper {
-            margin: 120px 0 !important;
-        }
-    }
-}
+    @media(max-width:1050px) {
 
-@media(max-width:1050px) and (min-width:751px){
-    .sobre-banner-container .sobre-banner-col:nth-of-type(1) {
-        width: 70%;
-        min-width: 390px;
-        .sobre-banner-text {
-            padding: 30px !important;
-          }
-      }
-}
-
-@media(max-width:850px){
-    #home-projs {
-
-        height: 100vh;
-        min-height: 2300px !important;
-        max-height: 2300px !important;
-        background-color: var(--branco);
-        z-index: 999;
-    .project-cover {
-        aspect-ratio: 10/8 !important;
-    }
-}
-}
-@media(max-width: 750px) {
-
-    /*HEADER*/
-    nav {
-        span {
-            font-size: 1em !important;
-
-            sup {
-                font-size: 0.55em;
+        footer {
+            .btn-orcamento-wrapper {
+                margin: 120px 0 !important;
             }
         }
     }
 
-    footer {
-        h2 {
-            font-size: 32px;
-            max-width: 500px !important;
-        }
+    @media(max-width:1050px) and (min-width:751px) {
+        .sobre-banner-container .sobre-banner-col:nth-of-type(1) {
+            width: 70%;
+            min-width: 390px;
 
-        .btn-orcamento-in {
-            top: -70px !important;
-
-            a {
-                padding: 20px !important;
-            }
-        }
-
-        .btn-contato {
-            flex-direction: column;
-            display: inline-flex;
-            width: fit-content;
-            margin: 0 auto;
-
-            a {
-                display: inline;
-                text-align: center;
-            }
-        }
-
-        .credits-social {
-            flex-direction: column-reverse !important;
-            text-align: center;
-
-            .footer-social {
-                flex-direction: column !important;
-                row-gap: 10px !important;
-            }
-
-        }
-    }
-
-    /*HOME*/
-    /*banners*/
-    #home-banner h1{
-        font-size: 125px !important;
-    }
-    
-
-    /*metodologia*/
-    #metodologia .pin-spacer {
-        display: none;
-    }
-
-    .metodologia-col1 {
-        display: none;
-    }
-
-    #home .metodologia-col2 {
-        width: 100% !important;
-
-        .metodologia-row {
-            flex-direction: column !important;
-        }
-    }
-
-    /*clientes*/
-    #clientes {
-        .box-cliente {
-            width: 80vw !important;
-            max-width: unset !important;
-            padding: 10px !important;
-        }
-    }
-
-    /*faq*/
-    #faq .container {
-        flex-direction: column
-    }
-
-    /*SOBRE NÓS*/
-
-    .sobre-banner-container {
-        flex-direction: column-reverse !important;
-
-        .sobre-banner-text {
-            padding: 30px !important;
-
-            h4 {
-                font-size: 25px;
-            }
-
-            p {
-                font-size: 11px;
+            .sobre-banner-text {
+                padding: 30px !important;
             }
         }
     }
 
-    #servicos {
+    @media(max-width:850px) {
+        #home-projs {
 
-        .servicos-itens {
-            flex-direction: column;
-            row-gap: 40px;
+            height: 100vh;
+            min-height: 2300px !important;
+            max-height: 2300px !important;
+            background-color: var(--branco);
+            z-index: 999;
 
-            h4 {
-                font-size: 25px;
+            .project-cover {
+                aspect-ratio: 10/8 !important;
             }
         }
     }
 
-    /*PROJECTS*/
-    #portfolio .projects-individual {
-        aspect-ratio: 1 !important;
+    @media(max-width: 750px) {
 
-        .portfolio-categories {
-            top: unset !important;
-            bottom: 10px !important;
-            font-size: 11px !important;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
+        /*HEADER*/
+        nav {
+            span {
+                font-size: 1em !important;
 
+                sup {
+                    font-size: 0.55em;
+                }
+            }
         }
 
-        .project-tag {
-            font-size: 11px !important;
-            display: flex;
-            flex-direction: column !important;
-
-            h3 {
-                line-height: 1.2em;
+        footer {
+            h2 {
+                font-size: 32px;
+                max-width: 500px !important;
             }
 
-        }
-    }
+            .btn-orcamento-in {
+                top: -70px !important;
 
-    /*SINGLE PROJECT*/
-    .post-individual {
-        .wp-block-columns {
-            margin: 40px 0 !important;
-
-            &.is-layout-flex {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-                justify-content: space-between;
-
-                .wp-block-column-is-layout-flow {
-                    max-width: 100%;
+                a {
+                    padding: 20px !important;
                 }
             }
 
-            h2 {
-                font-size: 28px !important;
-                margin-bottom: 20px;
+            .btn-contato {
+                flex-direction: column;
+                display: inline-flex;
+                width: fit-content;
+                margin: 0 auto;
+
+                a {
+                    display: inline;
+                    text-align: center;
+                }
             }
 
-            p {
-                font-size: 12px !important;
-                line-height: 1.7em;
+            .credits-social {
+                flex-direction: column-reverse !important;
+                text-align: center;
+
+                .footer-social {
+                    flex-direction: column !important;
+                    row-gap: 10px !important;
+                }
+
+            }
+        }
+
+        /*HOME*/
+        /*banners*/
+        #home-banner h1 {
+            font-size: 125px !important;
+        }
+
+
+        /*metodologia*/
+        #metodologia .pin-spacer {
+            display: none;
+        }
+
+        .metodologia-col1 {
+            display: none;
+        }
+
+        #home .metodologia-col2 {
+            width: 100% !important;
+
+            .metodologia-row {
+                flex-direction: column !important;
+            }
+        }
+
+        /*clientes*/
+        #clientes {
+            .box-cliente {
+                width: 80vw !important;
+                max-width: unset !important;
+                padding: 10px !important;
+            }
+        }
+
+        /*faq*/
+        #faq .container {
+            flex-direction: column
+        }
+
+        /*SOBRE NÓS*/
+
+        .sobre-banner-container {
+            flex-direction: column-reverse !important;
+
+            .sobre-banner-text {
+                padding: 30px !important;
+
+                h4 {
+                    font-size: 25px;
+                }
+
+                p {
+                    font-size: 11px;
+                }
+            }
+        }
+
+        #servicos {
+
+            .servicos-itens {
+                flex-direction: column;
+                row-gap: 40px;
+
+                h4 {
+                    font-size: 25px;
+                }
+            }
+        }
+
+        /*PROJECTS*/
+        #portfolio .projects-individual {
+            aspect-ratio: 1 !important;
+
+            .portfolio-categories {
+                top: unset !important;
+                bottom: 10px !important;
+                font-size: 11px !important;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
             }
 
+            .project-tag {
+                font-size: 11px !important;
+                display: flex;
+                flex-direction: column !important;
+
+                h3 {
+                    line-height: 1.2em;
+                }
+
+            }
+        }
+
+        /*SINGLE PROJECT*/
+        .post-individual {
+            .wp-block-columns {
+                margin: 40px 0 !important;
+
+                &.is-layout-flex {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    justify-content: space-between;
+
+                    .wp-block-column-is-layout-flow {
+                        max-width: 100%;
+                    }
+                }
+
+                h2 {
+                    font-size: 28px !important;
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    font-size: 12px !important;
+                    line-height: 1.7em;
+                }
+
+            }
+        }
+
+        .post-top {
+
+            .post-categories,
+            .post-cliente {
+                gap: 5px !important;
+                padding: 10px !important;
+            }
+
+            span,
+            h3 {
+                font-size: 9px !important;
+            }
+        }
+
+        .individual-project-cover {
+            img {}
+
         }
     }
-
-    .post-top {
-
-        .post-categories,
-        .post-cliente {
-            gap: 5px !important;
-            padding: 10px !important;
-        }
-
-        span,
-        h3 {
-            font-size: 9px !important;
-        }
-    }
-
-    .individual-project-cover {
-        img {}
-
-    }
-}

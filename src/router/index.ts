@@ -51,7 +51,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   setTimeout(() => {
     configGsap()
-    initGsap()
+    initGsap();
   }, 2000);
   next()
 })

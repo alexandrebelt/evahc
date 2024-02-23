@@ -22,9 +22,8 @@ import MenuMobile from '../components/MenuMobile.vue'
 import gsap from 'gsap'
 import scrollTrigger from 'gsap/all'
 gsap.registerPlugin(scrollTrigger);
-import { TweenMax, Elastic, Power4 } from 'gsap'
 export default {
-    
+
     components: {
         MenuMobile
     },
@@ -35,7 +34,7 @@ export default {
         }
     },
     mounted() {
-        
+
         gsap.to("#nav-links", {
             y: -100,
             scrollTrigger: {
@@ -109,6 +108,10 @@ nav {
         display: flex;
         flex-direction: row;
         gap: 50px;
+
+        a:nth-of-type(1) {
+            font-weight: 500;
+        }
     }
 
     a {

@@ -158,7 +158,7 @@ export default defineComponent({
         font-size: 13px;
 
         li {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
             color: var(--branco);
             padding: 5px 10px;
             border-radius: 20px;
