@@ -86,7 +86,11 @@ export default defineComponent({
         },
     },
     mounted() {
-        setTimeout(() => {
+        gsap.set(".projects-individual", {
+            opacity: 0,
+            scale: 0
+        })
+        this.carregaPortfolio().then(() => {
             gsap.from(".projects-individual", {
                 opacity: 0,
                 scale: 0
@@ -97,16 +101,7 @@ export default defineComponent({
                 duration: 1,
                 ease: "power4"
             })
-        }, 500)
-    },
-    created() {
-        this.carregaPortfolio();
-        this.$nextTick(() => {
-            gsap.set(".projects-individual", {
-                opacity: 0,
-                scale: 0
-            })
-        })
+        });
     }
 })
 </script>
