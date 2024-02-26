@@ -25,6 +25,7 @@ import ProjsComp from '@/components/home/ProjsComp.vue';
 import MetodologiaComp from '@/components/home/MetodologiaComp.vue';
 import ClientesComp from '@/components/home/ClientesComp.vue';
 import FaqComp from '@/components/home/FaqComp.vue';
+import { initGsap } from '@/utils/gsapAll';
 
 gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline()
@@ -39,7 +40,6 @@ export default defineComponent({
 
 
   methods: {
-
     initScrollLetters() {
       // Scrolling Letters Both Direction
       // https://codepen.io/GreenSock/pen/rNjvgjo
@@ -91,6 +91,8 @@ export default defineComponent({
 
   },
   mounted() {
+    window.removeEventListener('resize', initGsap())
+    window.addEventListener('resize', initGsap())
     this.initScrollLetters();
   }
 });
@@ -99,7 +101,7 @@ export default defineComponent({
 <style lang="scss">
 #home {
   position: relative;
-  z-index: 9998;
+  z-index: 999;
   background: var(--branco);
 
   h2 {

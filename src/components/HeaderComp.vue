@@ -5,7 +5,7 @@
                 <router-link class="magnetic-small" to="/"><span>Evahc Studio<sup>©</sup></span></router-link>
             </div>
             <div v-if="isMobile">
-                <MenuMobile />
+                <MenuMobile :isHome="isHome" />
             </div>
             <div v-else class="nav-col">
                 <router-link class="magnetic-small" to="/portfolio">Portfólio</router-link>
@@ -76,7 +76,7 @@ export default {
 
 nav {
 
-    z-index: 9999;
+    z-index: 1000;
     position: absolute;
     width: 100%;
     font-family: "Overused";

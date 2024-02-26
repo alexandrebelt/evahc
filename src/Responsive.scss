@@ -19,6 +19,15 @@
     }
 
     @media(max-width:850px) {
+
+        .routeView,
+        .intro-view {
+            h2 {
+                font-size: 32px !important;
+                max-width: 300px;
+            }
+        }
+
         #home-projs {
 
             height: 100vh;
@@ -29,11 +38,16 @@
 
             .project-cover {
                 aspect-ratio: 10/8 !important;
+                max-height: 40vh !important;
+
             }
         }
     }
 
     @media(max-width: 750px) {
+        .blank-space{
+            margin-bottom: 50px !important;
+        }
 
         /*HEADER*/
         nav {
@@ -153,8 +167,15 @@
         }
 
         /*PROJECTS*/
+        .portfolio-projects {
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap: 10px !important; 
+              row-gap: 10px;
+          }
         #portfolio .projects-individual {
             aspect-ratio: 1 !important;
+            flex-basis: calc(50% - 5px) !important;
 
             .portfolio-categories {
                 top: unset !important;
@@ -176,6 +197,9 @@
                 }
 
             }
+
+            /*Transition*/
+
         }
 
         /*SINGLE PROJECT*/
@@ -221,8 +245,17 @@
             }
         }
 
-        .individual-project-cover {
-            img {}
+        .project-category ul {
+            top: unset !important;
+            bottom: 10px !important;
+        }
 
+        #form-orcamento {
+
+            select,
+            input,
+            textarea {
+                font-size: 13px;
+            }
         }
     }

@@ -96,7 +96,7 @@ footer {
     background: var(--preto);
     color: var(--branco);
     position: relative;
-    z-index: 9997;
+    z-index: 999;
 
 
     #footer {

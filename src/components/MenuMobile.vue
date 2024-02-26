@@ -1,7 +1,9 @@
 <template>
     <div class="menu-mobile">
         <div id="mobile-btn" class="btn-menu-mobile btn-action">
-            Menu
+            <span :class="{ 'router-color': isHome }" >
+                Menu
+            </span>
         </div>
         <div :on-click="mostraMenu" class="container-menu-mobile">
             <div class="mobile-menu-content">
@@ -23,11 +25,14 @@ import $ from 'jquery';
 gsap.registerPlugin(scrollTrigger)
 
 export default {
+    props:['isHome'],
     data() {
+        
         return {
             mostraMenu: false
         }
     },
+    
     mounted() {
         let btn = document.querySelector("#mobile-btn");
         let menu = document.querySelector(".menu-mobile");
@@ -115,7 +120,7 @@ export default {
 <style lang="scss">
 .btn-menu-mobile {
     position: relative;
-    z-index: 99999;
+    z-index: 999;
     color: var(--branco)
 }
 .mobile-menu-content{

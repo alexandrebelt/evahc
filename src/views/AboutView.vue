@@ -1,5 +1,6 @@
 <template>
   <section id="sobre-banner" class="container limit">
+    <div class="blank-space"></div>
     <div class="sobre-banner-container">
       <div class="sobre-banner-col">
         <div class="sobre-banner-text">

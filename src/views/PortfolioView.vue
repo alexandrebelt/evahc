@@ -1,5 +1,6 @@
 <template>
     <section id="portfolio" class="container limit">
+        <div class="blank-space"></div>
 
         <ul class="portfolio-projects">
             <li class="projects-individual" v-for="proj in projs" :key="proj.id">
@@ -106,6 +107,9 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
+#portfolio{
+    min-height: 50vh;
+}
 #portfolio li {
     list-style: none;
 }
@@ -132,6 +136,15 @@ export default defineComponent({
         display: flex;
         flex-direction: row;
         gap: 10px;
+        h3{
+            &:nth-of-type(1){
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            &:nth-of-type(2){
+                font-weight: 500;
+            }
+        }
 
     }
 
@@ -155,6 +168,7 @@ export default defineComponent({
         li {
             background: rgba(0, 0, 0, 0.4);
             color: var(--branco);
+            font-weight: 500;
             padding: 5px 10px;
             border-radius: 20px;
         }

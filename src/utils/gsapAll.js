@@ -42,14 +42,6 @@ export function configGsap() {
 
 export function initGsap() {
     const tl = gsap.timeline()
-    const responsiveBanner = () => {
-      if (window.innerWidth <= 850 || window.innerHeight <= 700) {
-        return "1800px"
-      } else {
-        return "2600px"
-      }
-    }
-
     gsap.set("#home-banner", {y:0})
 
     gsap.utils.toArray(".banner-text").forEach((text) => {
@@ -78,34 +70,21 @@ export function initGsap() {
       tl.to(panel, {
         keyframes: {
           "0%": { scale: 1, },
-          "80%": { scale: 0.8, },
-          "100%": { scale: 0.8, },
+          "80%": { scale: 0.8, filter: "blur(0px)" },
+          "100%": { scale: 0.8, filter: "blur(10px)"},
         },
         scrollTrigger: {
           trigger: panel,
           scrub: 2,
-          start: `70% center+=${100 * i}`,
-          end: `+=${1000 * (array.length - i) - 50}`,
+          start: `70% center+=${25 * i}`,
+          //end: `bottom+=${1000 * (array.length - i)}`,
           pin: true,
           pinSpacing: false,
         },
 
       })
     })
+    
 
-    tl.to(".projects", {
 
-      keyframes: {
-        "0%": { opacity: 1 },
-        "90%": { opacity: 1 },
-        "100%": { opacity: 0 }
-      },
-      scrollTrigger: {
-        scrub: true,
-        trigger: ".projects",
-        start: "top bottom",
-        end: responsiveBanner()
-
-      }
-    })
   }

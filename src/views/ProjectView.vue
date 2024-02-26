@@ -1,4 +1,5 @@
 <template>
+    <div class="blank-space"></div>
     <div v-if="proj">
         <section class="post-individual">
             <div class="container limit">
@@ -75,9 +76,23 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
         .post-top-col {
-            span, h3{
+
+            span,
+            h3 {
                 font-size: 12px;
+            }
+
+        }
+
+        .post-top-col {
+            &:nth-of-type(1) {
+                h3 {
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+
             }
         }
 
@@ -85,10 +100,10 @@ export default {
             display: flex;
             flex-direction: row;
             gap: 10px;
-            padding:20px;
+            padding: 20px;
             top: 10px !important;
             right: 10px !important;
-            
+
 
             h3 {
                 background: rgba(0, 0, 0, 0.4);

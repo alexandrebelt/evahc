@@ -51,8 +51,9 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   setTimeout(() => {
     configGsap()
-    initGsap();
+    window.scrollTo({ top: 0});
   }, 2000);
+  
   next()
 })
 

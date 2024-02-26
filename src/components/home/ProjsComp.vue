@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { configGsap } from '@/utils/gsapAll'
+import { configGsap, initGsap } from '@/utils/gsapAll'
 import axios from 'axios'
 export default {
     data() {
@@ -73,7 +73,7 @@ export default {
         },
     },
     mounted() {
-        this.fetchProjsData().then(()=>configGsap())
+        this.fetchProjsData().then(()=>initGsap())
     }
 }
 </script>
@@ -81,21 +81,21 @@ export default {
 <style lang="scss">
 #home-projs {
     position: relative;
-    height: 180vh;
-    min-height: 3300px;
-    max-height: 3300px;
+    height: 400vh !important;
     background-color: var(--branco);
     z-index: 999;
 }
 
 .projects {
     position: relative;
+    height: 300vh
 }
 
 .project-cover {
     border-radius: 20px;
     margin: 0 auto;
-    margin-bottom: 50vh;
+    height: 67vh;
+    margin-bottom: 33vh;
     width: 100%;
     aspect-ratio: 10/5;
     max-height: 70vh;
@@ -139,8 +139,8 @@ export default {
         flex-direction: row;
         gap: 10px;
         position: absolute;
-        top: 10px !important;
-        right: 10px !important;
+        top: 10px;
+        right: 10px;
         font-size: 12px;
 
         li {

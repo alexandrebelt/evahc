@@ -1,5 +1,6 @@
 <template>
     <section id="orcamento" class="container limit">
+        <div class="blank-space"></div>
         <h2>
             Vamos fazer um projeto extraordinário juntos?
         </h2>

@@ -3,7 +3,7 @@
   <transition name="fade" mode="out-in">
     <HeaderComp />
   </transition>
-
+  <IntroView />
   <TransitionView :routeName="toName" :projectTitle="$route.params.projectName" v-if="showTransition" />
 
   <router-view v-slot="{ Component }">
@@ -21,18 +21,21 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import FooterComp from '/src/components/FooterComp.vue';
 import HeaderComp from '/src/components/HeaderComp.vue';
+import IntroView from '/src/components/IntroView.vue';
 import TransitionView from '/src/components/TransitionView.vue';
 import { defineComponent } from 'vue';
 import { gsap } from "gsap";
-import { ScrollTrigger} from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 import { initMagnets } from './utils/magneticElements.js';
+import { configGsap, initGsap } from './utils/gsapAll';
 gsap.registerPlugin(ScrollTrigger)
 
 export default defineComponent({
-  
+
   components: {
     FooterComp,
     HeaderComp,
+    IntroView,
     TransitionView
   },
   data() {
@@ -47,10 +50,14 @@ export default defineComponent({
     const scroll = new LocomotiveScroll({
       //@ts-expect-error - Reconhece de qualquer maneira o el
       el: document.querySelector("[router-view]"),
-      smooth: true
+      smooth: 'easeOutExpo',
     });
 
     initMagnets();
+    configGsap();
+    window.removeEventListener('resize',initGsap())
+    window.addEventListener('resize',initGsap())
+
 
   },
   watch: {
@@ -126,7 +133,9 @@ section {
 .container {
   margin: 0 auto
 }
-
+.blank-space{
+  margin-bottom: 100px;
+}
 .container.limit {
   max-width: var(--container-width);
   padding: 80px 20px;

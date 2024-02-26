@@ -39,7 +39,7 @@ export default {
             x: -100,
         })
         gsap.to(".text-route", {
-            x: 50,
+            x: 25,
             ease: "power4.out",
             duration: 2
         })
@@ -54,7 +54,7 @@ export default {
     width: 100%;
     height: 100%;
     background: var(--preto);
-    z-index: 99999;
+    z-index: 1001;
     color: var(--branco);
 
     h2 {
