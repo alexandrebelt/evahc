@@ -49,11 +49,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  document.querySelector("#nav")?.classList.add("animate-transition");
   setTimeout(() => {
     configGsap()
     window.scrollTo({ top: 0});
+    document.querySelector("#nav")?.classList.remove("animate-transition");
   }, 2000);
-  
   next()
 })
 

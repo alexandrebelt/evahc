@@ -1,13 +1,13 @@
 <template>
     <nav id="nav">
-        <div id="nav-links" :class="{ 'router-color': isHome }">
-            <div class="nav-col">
+        <div id="nav-links">
+            <div class="nav-col" :class="{ 'router-color': isHome }">
                 <router-link class="magnetic-small" to="/"><span>Evahc Studio<sup>©</sup></span></router-link>
             </div>
             <div v-if="isMobile">
                 <MenuMobile :isHome="isHome" />
             </div>
-            <div v-else class="nav-col">
+            <div v-else class="nav-col" :class="{ 'router-color': isHome }">
                 <router-link class="magnetic-small" to="/portfolio">Portfólio</router-link>
                 <router-link class="magnetic-small" to="/sobre-nos">Sobre Nós</router-link>
                 <router-link class="magnetic-small" :class="{ 'btn-fundo-cinza': !isHome }"
@@ -71,6 +71,37 @@ export default {
 <style lang="scss">
 .router-color {
     color: var(--preto) !important;
+    animation: transitionHeader 2s ease !important;
+}
+
+.open-mobile-menu {
+    color: var(--branco) !important;
+    animation: transitionHeader 2s ease !important;
+}
+.animate-transition {
+    animation: transitionHeader 2s ease !important;
+}
+
+
+@keyframes transitionHeader {
+    0% {
+        opacity: 1;
+        transform: translatey(-100px);
+    }
+
+    15% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+        transform: translatey(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatey(0px)
+    }
 }
 
 
@@ -134,5 +165,4 @@ nav {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between;
-}
-</style>
+}</style>

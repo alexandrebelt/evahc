@@ -81,14 +81,14 @@ export default {
 <style lang="scss">
 #home-projs {
     position: relative;
-    height: 400vh !important;
+    height: 350vh !important;
     background-color: var(--branco);
     z-index: 999;
 }
 
 .projects {
     position: relative;
-    height: 300vh
+    height: 300vh !important;
 }
 
 .project-cover {
@@ -103,7 +103,7 @@ export default {
 
     img {
 
-        width: 100% !important;
+        width: 100%;
     }
 
     .project-tags {

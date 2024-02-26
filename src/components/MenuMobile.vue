@@ -1,7 +1,7 @@
 <template>
     <div class="menu-mobile">
-        <div id="mobile-btn" class="btn-menu-mobile btn-action">
-            <span :class="{ 'router-color': isHome }" >
+        <div id="mobile-btn" :class="{ 'router-color': isHome }" style="z-index: 1003;" class="btn-menu-mobile btn-action">
+            <span :class="{ 'open-mobile-menu': mostraMenu }">
                 Menu
             </span>
         </div>
@@ -47,7 +47,7 @@ export default {
         gsap.set(mobileLinks, { x: 500, })
 
 
-
+        
         if (this.mostraMenu) {
             gsap.to(menu, {
                 scrollTrigger: {
@@ -63,6 +63,7 @@ export default {
 
             });
         } else {
+            
             gsap.set("#nav-links", {
                 y: 0,
             });

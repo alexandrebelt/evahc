@@ -171,11 +171,11 @@
             display: flex;
             flex-wrap: wrap;
             grid-gap: 10px !important; 
-              row-gap: 10px;
           }
         #portfolio .projects-individual {
-            aspect-ratio: 1 !important;
-            flex-basis: calc(50% - 5px) !important;
+            aspect-ratio: 10/5 !important;
+            flex-basis: 100% !important;
+            width: 100%;
 
             .portfolio-categories {
                 top: unset !important;
