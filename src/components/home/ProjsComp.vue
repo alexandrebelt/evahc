@@ -113,8 +113,8 @@ export default {
 
     .project-tags {
         position: absolute;
-        top: 10px !important;
-        left: 10px !important;
+        top: 30px !important;
+        left: 30px !important;
         font-size: 12px;
         display: flex;
         flex-direction: row;

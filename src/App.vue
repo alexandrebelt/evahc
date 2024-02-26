@@ -137,7 +137,7 @@ section {
   margin-bottom: 100px;
 }
 .container.limit {
-  max-width: var(--container-width);
+  max-width: 100%;
   padding: 80px 20px;
   /*width: 100%;*/
 }
