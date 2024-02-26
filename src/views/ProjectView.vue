@@ -1,5 +1,5 @@
 <template>
-    <div class="blank-space"></div>
+    
     <div v-if="proj">
         <section class="post-individual">
             <div class="container limit">
