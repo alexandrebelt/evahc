@@ -153,12 +153,19 @@ export default defineComponent({
 
   h1 {
     font-family: var(--overused);
-    text-align: right;
     width: max-content;
     bottom: 1vw;
     left: 0;
     font-size: 9.8vw;
     font-weight: 400;
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
   }
 }
 </style>
