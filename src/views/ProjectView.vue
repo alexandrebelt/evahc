@@ -1,5 +1,4 @@
 <template>
-    
     <div v-if="proj">
         <section class="post-individual">
             <div class="container limit">
@@ -17,7 +16,15 @@
                 <img class="individual-project-cover"
                     v-if="proj['_embedded'] && proj['_embedded']['wp:featuredmedia'] && proj['_embedded']['wp:featuredmedia'][0].source_url"
                     :src="proj['_embedded']['wp:featuredmedia'][0].source_url" :alt="proj.title.rendered + '_thumb'">
-                <p class="post-content" v-html="proj.content.rendered"></p>
+                <div class="proj-content">
+                    <div class="wp-block-column data-proj">
+                        <h2>{{ proj.title.rendered }}</h2>
+                        <em>"A matéria-prima da sua imaginação"
+                        </em>
+                        <p>{{ loadDate(proj.date) }}</p>
+                    </div>
+                    <p class="post-content" v-html="proj.content.rendered"></p>
+                </div>
             </div>
         </section>
 
@@ -30,9 +37,10 @@
         </section>
     </div>
 </template>
+
 <script>
 import axios from 'axios';
-
+import gsap from 'gsap';
 export default {
     props: ['projectId', 'projectName'],
     data() {
@@ -42,6 +50,14 @@ export default {
         };
     },
     methods: {
+        loadDate(date) {
+            const wordpressDate = date;
+            const data = new Date(wordpressDate);
+
+            const mes = data.toLocaleString('default', { month: "long" });
+            const ano = data.getFullYear();
+            return `${mes}` + "/" + `${ano}`;
+        },
         loadCategories() {
             axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
                 .then((response) => {
@@ -57,20 +73,61 @@ export default {
             return this.categories[categoryId];
         },
     },
-    mounted() {
-        axios.get(`https://evahc.com.br/wp-json/wp/v2/posts/${this.projectId}?_embed`)
+    created() {
+        axios.get(`https://evahc.com.br/wp-json/wp/v2/posts?slug=${this.projectName}&_embed`)
             .then((response) => {
-                this.proj = response.data
+                this.proj = response.data[0]
                 this.loadCategories()
+            }).then(() => {
+                let dataProj = document.querySelector(".data-proj");
+                let dataPai = document.querySelector(".wp-block-columns");
+                let datafirstChild = dataPai.firstChild;
+
+
+                let wpCol = document.querySelector(".wp-block-column");
+
+                dataPai.insertBefore(dataProj, datafirstChild);
+
+                gsap.set(".wp-block-column", {
+                    opacity: 0,
+                    x: 100
+                })
+                gsap.to(".wp-block-column", {
+                    opacity: 1,
+                    x: 0,
+                    stagger: {
+                        each: 0.2,
+                    },
+                    scrollTrigger: {
+                        trigger: dataPai,
+                        scrub: 2,
+                        start: "70% bottom",
+                        end: "center center",
+                    }
+                })
             })
             .catch((error) => (console.log(error)))
 
-    }
+    },
 };
 </script>
 
 <style lang="scss">
 .post-individual {
+
+    .proj-content {
+
+        h4 {
+            font-size: 21px !important;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: var(--preto)
+        }
+
+        .wp-block-column-is-layout-flow p {
+            color: var(--cinza)
+        }
+    }
 
     .post-top {
         display: flex;
@@ -78,10 +135,13 @@ export default {
         justify-content: space-between;
 
         .post-top-col {
-
+            span{
+                text-transform: uppercase;
+                color:var(--cinza)
+            }
             span,
             h3 {
-                font-size: 12px;
+                font-size: 13px;
             }
 
         }
@@ -89,8 +149,7 @@ export default {
         .post-top-col {
             &:nth-of-type(1) {
                 h3 {
-                    font-weight: 600;
-                    text-transform: uppercase;
+                    font-weight: 500;
                 }
 
             }
@@ -112,11 +171,20 @@ export default {
                 padding: 5px 10px;
                 border-radius: 20px;
             }
+
         }
     }
 
     .wp-block-columns {
         margin: 80px 0;
+
+        .data-proj {
+            order: 0;
+        }
+
+        .wp-block-column-is-layout-flow {
+            order: 1
+        }
 
         &.is-layout-flex {
             display: flex;
@@ -143,10 +211,8 @@ export default {
 
         span {
             font-weight: 500;
-            text-transform: uppercase;
         }
 
-        h3 {}
 
     }
 
@@ -161,4 +227,36 @@ export default {
         height: auto;
         border-radius: 20px;
     }
-}</style>
+}
+
+.data-proj {
+    width: 30%;
+
+    h2 {
+        text-transform: lowercase;
+        margin-bottom: 20px;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    em {
+        font-size: 23px;
+        font-weight: 300;
+
+        &:before,
+        &:after {
+            content: '"';
+        }
+    }
+
+    p {
+        text-transform: capitalize;
+        margin-top: 40px;
+        font-weight: 300;
+        font-size: 23px;
+        color: var(--cinza-quase-claro);
+    }
+}
+</style>

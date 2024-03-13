@@ -1,10 +1,13 @@
 <template>
     <section id="faq">
-        <div class="container limit">
+        <div class="container limit-mid">
             <div class="faq-col col1">
-                <h2>Dúvidas frequentes</h2>
+                <h2>
+                    <img src="seta-diagonal.png" class="seta-diagonal" />
+                    Dúvidas frequentes
+                </h2>
                 <p>Não encontrou o que precisava ou possui questões mais complexas? Fale diretamente com a gente pelo
-                    Whatsapp.
+                    <a href="https://wa.me/557998562987" target="_blank">Whatsapp.</a>
                 </p>
             </div>
             <div class="faq-col col2">
@@ -13,7 +16,7 @@
                         <div class="faq-wrapper">
                             <div class="faq-pergunta" @click="showFaq(index)">{{ item.pergunta }}</div>
                             <div class="faq-resposta" :class="{ mostraFaq: activeIndex === index }">
-                                <p>{{ item.resposta }}</p>
+                                <p v-html="item.resposta"></p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +40,7 @@ export default {
         }
     },
     created() {
-        axios.get('faq.json')
+        axios.get('json/faq.json')
             .then((response) => (this.itens = response.data.faq)).
             then(() => {
                 console.log(this.itens)
@@ -101,7 +104,20 @@ export default {
     display: row;
     gap: 40px;
 
+    .col1 {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+
+        a {
+            color: var(--cinza);
+            text-decoration: underline;
+        }
+    }
+
     .faq-col {
+
+
         flex-basis: 50%;
 
         &:nth-of-type(1) p {
@@ -119,7 +135,7 @@ export default {
                 font-size: 22px;
                 margin-bottom: 10px;
                 margin-top: 20px;
-                cursor:pointer;
+                cursor: pointer;
             }
 
             .faq-pergunta:before {
@@ -130,7 +146,11 @@ export default {
             .faq-resposta {
                 max-height: 0px;
                 overflow: hidden;
+                ol{
+                    padding-left: 25px;
+                }
                 margin-bottom: 20px;
+                font-weight: 400;
                 transition: 0.6s;
             }
         }

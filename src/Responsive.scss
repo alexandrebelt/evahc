@@ -1,3 +1,54 @@
+    @media(min-width:1550px) {
+        .sobre-banner-container {
+            //max-height: 900px;
+
+            img {
+                object-position: center 30%
+            }
+        }
+    }
+
+    @media(max-width: 1350px) and (min-width: 850px) {
+        .metodologia-descricao {
+            font-size: 1.3vw;
+        }
+
+        .cami-conteudo {
+            font-size: 1.3vw;
+        }
+
+    }
+
+    @media(max-width: 1350px) {
+
+        .post-content {
+            .wp-block-columns {
+                flex-direction: column;
+
+                .wp-block-column {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+            }
+        }
+
+        .wp-block-column.data-proj {
+            h2 {
+                font-size: 22px !important;
+                margin-bottom: 10px;
+            }
+
+            em {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+        }
+    }
+
     @media(max-width:1050px) {
 
         footer {
@@ -37,15 +88,23 @@
             z-index: 999;
 
             .project-cover {
-                aspect-ratio: 10/8 !important;
-                max-height: 40vh !important;
+                height: 50vh;
+                width: 100%;
 
+            }
+        }
+
+        #metodologia {
+            .metodologia-descricao {
+                font-size: 1.5vw;
             }
         }
     }
 
+
+
     @media(max-width: 750px) {
-        .blank-space{
+        .blank-space {
             margin-bottom: 0px !important;
         }
 
@@ -58,6 +117,11 @@
                     font-size: 0.55em;
                 }
             }
+
+            .router-link-active,
+            .nav-col.router-color a {
+                //padding: 0;
+            }
         }
 
         footer {
@@ -68,6 +132,9 @@
 
             .btn-orcamento-in {
                 top: -70px !important;
+                right: unset !important;
+                left: 50%;
+                transform: translatex(-50%) !important;
 
                 a {
                     padding: 20px !important;
@@ -106,6 +173,10 @@
 
 
         /*metodologia*/
+        #metodologia h2 {
+            font-size: 30px !important;
+        }
+
         #metodologia .pin-spacer {
             display: none;
         }
@@ -122,21 +193,73 @@
             }
         }
 
+
+
+        #metodologia {
+            .metodologia-row {
+                padding-top: 5px !important;
+                margin-bottom: 5px !important;
+                gap: 10px !important;
+
+                .metodologia-itens {
+                    font-size: 10px !important;
+                }
+            }
+
+            .metodologia-descricao {
+                font-size: 12px !important;
+            }
+
+            h2 {
+                margin-top: 10px;
+                margin-bottom: 15px !important;
+
+                img {
+                    max-width: 20px;
+                }
+            }
+        }
+
+
+
+
+
         /*clientes*/
         #clientes {
             .box-cliente {
-                width: 80vw !important;
+                width: 100vw !important;
                 max-width: unset !important;
                 padding: 10px !important;
             }
+
+            video {
+                width: 320px !important;
+            }
+
+            .cliente-depoimento {
+                justify-content: center;
+                display: flex;
+            }
+
         }
 
         /*faq*/
         #faq .container {
-            flex-direction: column
+            flex-direction: column;
+
+            .faq-col.col1 {
+                width: 100% !important;
+            }
         }
 
+
         /*SOBRE NÓS*/
+        .sobre-banner-text {
+            h2 {
+                font-size: 28px !important;
+                font-family: var(--overused);
+            }
+        }
 
         .sobre-banner-container {
             flex-direction: column-reverse !important;
@@ -144,12 +267,19 @@
             .sobre-banner-text {
                 padding: 30px !important;
 
+
                 h4 {
                     font-size: 25px;
                 }
 
                 p {
                     font-size: 11px;
+                    margin: 20px 0px 0px !important;
+                }
+
+                em {
+                    font-size: 11px !important;
+                    max-width: 180px !important;
                 }
             }
         }
@@ -170,8 +300,9 @@
         .portfolio-projects {
             display: flex;
             flex-wrap: wrap;
-            grid-gap: 10px !important; 
-          }
+            grid-gap: 10px !important;
+        }
+
         #portfolio .projects-individual {
             aspect-ratio: 10/5 !important;
             flex-basis: 100% !important;
@@ -179,7 +310,8 @@
 
             .portfolio-categories {
                 top: unset !important;
-                bottom: 10px !important;
+                bottom: 20px !important;
+                right: 20px !important;
                 font-size: 11px !important;
                 display: flex;
                 flex-direction: row;
@@ -191,6 +323,9 @@
                 font-size: 11px !important;
                 display: flex;
                 flex-direction: column !important;
+                gap: 0px !important;
+                top:20px !important;
+                left:20px !important;
 
                 h3 {
                     line-height: 1.2em;

@@ -2,8 +2,19 @@
   <div id="home">
 
     <section id="home-banner">
+      <div class="conteiner limit-mid">
+        <div class="banner-p-text">
+          <p>
+            <img src="seta-diagonal.png" />
+            <span>Desenvolvemos soluções visuais
+              únicas, construindo marcas <strong>inteligentes</strong> por todo Brasil e ao redor do mundo.</span>
+          </p>
+        </div>
+      </div>
       <div class="container limit">
-        <h1 class="banner-text">Design, Estratégia & Propósito-</h1>
+        <div class="banner-text">
+          <h1>Design, Estratégia & Propósito—</h1>
+        </div>
       </div>
     </section>
 
@@ -25,12 +36,16 @@ import ProjsComp from '@/components/home/ProjsComp.vue';
 import MetodologiaComp from '@/components/home/MetodologiaComp.vue';
 import ClientesComp from '@/components/home/ClientesComp.vue';
 import FaqComp from '@/components/home/FaqComp.vue';
-import { initGsap } from '@/utils/gsapAll';
+import { initGsap, initScrollLetters } from '@/utils/gsapAll';
 
 gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline()
 export default defineComponent({
-
+  data() {
+    return {
+      scrollLetterInitialized: false
+    }
+  },
   components: {
     ProjsComp,
     MetodologiaComp,
@@ -38,63 +53,20 @@ export default defineComponent({
     FaqComp,
   },
 
-
-  methods: {
-    initScrollLetters() {
-      // Scrolling Letters Both Direction
-      // https://codepen.io/GreenSock/pen/rNjvgjo
-      // Fixed example with resizing
-      // https://codepen.io/GreenSock/pen/QWqoKBv?editors=0010
-
-      let direction = 1; // 1 = forward, -1 = backward scroll
-
-      const roll1 = roll(".banner-text", { duration: 18 }),
-        scroll = ScrollTrigger.create({
-          trigger: document.querySelector('[data-scroll-container]'),
-          onUpdate(self) {
-            if (self.direction !== direction) {
-              direction *= -1;
-              gsap.to([roll1], { timeScale: direction, overwrite: true });
-            }
-          }
-        });
-
-      // helper function that clones the targets, places them next to the original, then animates the xPercent in a loop to make it appear to roll across the screen in a seamless loop.
-      function roll(targets, vars, reverse) {
-        vars = vars || {};
-        vars.ease || (vars.ease = "none");
-        const tl = gsap.timeline({
-          repeat: -1,
-          onReverseComplete() {
-            this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
-          }
-        }),
-          elements = gsap.utils.toArray(targets),
-          clones = elements.map(el => {
-            let clone = el.cloneNode(true);
-            el.parentNode.appendChild(clone);
-            return clone;
-          }),
-          positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], { position: "absolute", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth) }));
-        positionClones();
-        elements.forEach((el, i) => tl.to([el, clones[i]], { xPercent: reverse ? 100 : -100, ...vars }, 0));
-        window.addEventListener("resize", () => {
-          let time = tl.totalTime(); // record the current time
-          tl.totalTime(0); // rewind and clear out the timeline
-          positionClones(); // reposition
-          tl.totalTime(time); // jump back to the proper time
-        });
-        return tl;
-      }
-
-    },
-
-  },
   mounted() {
-    window.removeEventListener('resize', initGsap())
-    window.addEventListener('resize', initGsap())
-    this.initScrollLetters();
-  }
+    //window.removeEventListener('resize', initGsap())
+    //initGsap()
+
+    if (!this.scrollLetterInitialized) {
+      setTimeout(() => {
+        initScrollLetters();
+        this.scrollLetterInitialized = true;
+      }, 1000)
+    } else {
+      this.scrollLetterInitialized = true;
+    }
+  },
+
 });
 </script>
 
@@ -105,7 +77,7 @@ export default defineComponent({
   background: var(--branco);
 
   h2 {
-    font-size: 48px !important;
+    font-size: 48px;
     margin-bottom: 30px;
   }
 
@@ -113,24 +85,75 @@ export default defineComponent({
 
 #home-banner {
   color: var(--branco);
+  position: relative;
   height: 95vh;
-  min-height: 600px;
+  min-height: 300px;
   background-image: url('/public/1.jpg');
-  background-position: center 10%;
+  background-position: center 20%;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-wrap: nowrap;
   align-items: end;
   z-index: 0;
+  flex-direction: column;
+
+
+  .conteiner.limit-mid {
+    width: 100%;
+    max-width: 1620px;
+    padding-top: 40vh;
+    margin: 0 auto;
+
+    .banner-p-text {
+      float: right;
+      display: flex;
+      padding: 0 30px;
+      max-width: 430px;
+    }
+  }
+
+  .container.limit:nth-of-type(2) {
+    margin-top: auto;
+  }
+
+  .banner-p-text {
+    gap: 10px;
+
+    p {
+      line-height: 1.7rem !important;
+      font-size: 24px;
+      font-weight: 300;
+
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    img {
+      filter: invert(1) brightness(100);
+      max-width: 15px;
+      height: auto;
+      margin-right: 10px;
+
+    }
+  }
 
   .container {
-    position: relative;
+    //position: relative;
+    display: block ruby !important;
+
+    .banner-text {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      position: relative;
+    }
   }
 
   h1 {
     font-family: var(--overused);
-    text-align: left;
+    text-align: right;
     width: max-content;
     bottom: 1vw;
     left: 0;
@@ -138,6 +161,4 @@ export default defineComponent({
     font-weight: 400;
   }
 }
-
-
 </style>

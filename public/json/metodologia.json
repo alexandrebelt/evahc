@@ -1,0 +1,20 @@
+{
+    "metodologia": [
+        {
+            "nome": "Conexão",
+            "descricao": "Nesta etapa, realizamos dois encontros estratégicos, fazendo perguntas provocativas para te conectar à sua marca. Durante essas interações, faremos anotações para compreender melhor a marca a ser desenvolvida."
+        },
+        {
+            "nome": "Alma",
+            "descricao": "Conectados à marca, diagnosticamos e definimos sua estratégia, aqui vamos extraímos a sua essência. Em seguida, nos reunimos para apresentar e alinhar as conclusões da etapa anterior."
+        },
+        {
+            "nome": "Manifesto",
+            "descricao": "Agora que a marca está estruturada e com sua estratégia definida, é o momento de manifestá-la visualmente através da escolha das cores, tipografias, elementos de apoio, logotipo, entre outros."
+        },
+        {
+            "nome": "Inserção",
+            "descricao": "Após apresentar a marca e sua aprovação, temos uma marca bem estruturada, com decisões inteligentes que a tornam funcional. Agora, ela está pronta para ser inserida no mercado, e enviaremos os ativos por e-mail."
+        }
+    ]
+}

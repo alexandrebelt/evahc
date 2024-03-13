@@ -1,0 +1,19 @@
+{
+    "servicos": [
+        {
+            "passo": "01",
+            "titulo": "Naming",
+            "conteudo": "Criamos nomes que carregam três princípios cruciais: <strong>Objetivo, Estratégico e Memorável.</strong> Realizamos pesquisas aprofundadas, validações e verificação da disponibilidade em registro, domínio e username das redes sociais para garantir um nome <strong>único e eficaz</strong>  para a marca."
+        },
+        {
+            "passo": "02",
+            "titulo": "Estratégia de Marca",
+            "conteudo": "Uma marca duradoura no mercado <strong>exige uma boa estruturação.</strong> Construímos uma <strong>base sólida</strong> para uma comunicação eficaz ao definir com estratégia os valores, posicionamento, personalidade, tom de voz, atributos, analisando o propósito e o mercado a ser explorado."
+        },
+        {
+            "passo": "03",
+            "titulo": "Identidade de Marca",
+            "conteudo": "A nossa imagem comunica muito sobre quem somos, assim como as marcas. Com um bom naming e uma estratégia sólida em mãos, conseguimos <strong>expressar visualmente com excelência</strong> sua identidade através de suas cores, tipografia, logotipo e outros elementos de apoio."
+        }
+    ]
+}

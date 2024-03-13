@@ -1,13 +1,30 @@
 <template>
     <section id="metodologia">
-        <div class="container limit">
+        <div class="container limit-mid">
             <div class="metodologia-col1">
-                <span>Processo</span>
+                <h2>
+                    <img class="seta-diagonal" src="seta-diagonal.png" />
+                    Conheça a C.A.M.I
+                </h2>
+                <div class="cami-conteudo">
+                    <p>Ao conduzirmos a execução e desenvolvimento de diversos projetos, identificamos um padrão de
+                        estratégias
+                        e técnicas que permeiam nosso processo. Esse padrão resulta em soluções visuais que traduzem
+                        marcas
+                        de
+                        forma inteligente e funcional, agregando valor e alinhando-se às demandas do mercado.</p>
+                    <p>Com isso, decidimos criar nossa própria metodologia, a CAMI. Esta sigla representa etapas
+                        cruciais
+                        que se
+                        mostraram indispensáveis ao longo de nossos projetos. Convidamos você a explorar e aprofundar-se
+                        em
+                        cada
+                        uma dessas etapas ao seu lado, descobrindo os detalhes que tornam a CAMI uma abordagem
+                        distintiva e
+                        eficaz em nosso universo de trabalho.</p>
+                </div>
             </div>
             <div class="metodologia-col2">
-                <h2>
-                    Conheça nossa metodologia
-                </h2>
                 <div v-for="met in mets" :key="met.id" class="metodologia-row">
                     <div class="metodologia-itens">{{ met.nome }}</div>
                     <div class="metodologia-descricao">{{ met.descricao }}</div>
@@ -30,13 +47,12 @@ export default {
         }
     },
     created() {
-        axios.get('metodologia.json')
+        axios.get('json/metodologia.json')
             .then((response) => (this.mets = response.data.metodologia))
             .catch((error) => console.error(error));
     },
     mounted() {
         const tl = gsap.timeline();
-
         setTimeout(() => {
             gsap.set(".metodologia-descricao", {
                 opacity: 0,
@@ -46,37 +62,28 @@ export default {
                 opacity: 0,
             })
             gsap.set(".metodologia-col1 span", {
+                opacity: 1
+            })
+            gsap.set(".metodologia-col2", {
                 opacity: 0
             })
-            tl.to(".metodologia-col1 span", {
-                keyframes: {
-                    "0%": { opacity: 0 },
-                    "30%": { opacity: 1 },
-                    "90%": { opacity: 1 },
-                    "100%": { opacity: 0 }
-
-                },
-                scrollTrigger: {
-                    trigger: ".metodologia-col1",
-                    scrub: true,
-                    pin: true,
-                    start: "top center",
-                    end: "bottom center+=70",
-                },
-            })
-            tl.to(".metodologia-col2 h2", {
-                keyframes: {
-                    "0%": { opacity: 0 },
-                    "100%": { opacity: 1 }
-
-                },
+            tl.to("#metodologia", {
                 scrollTrigger: {
                     trigger: "#metodologia",
-                    scrub: true,
-
-                    start: "top 80%",
-                    end: "+=200",
-                },
+                    pin: true,
+                    start: "center center",
+                    end: "bottom end",
+                    scrub: 1
+                }
+            })
+            tl.to(".metodologia-col2", {
+                opacity: 1,
+                scrollTrigger: {
+                    trigger: "#metodologia",
+                    start: "center center",
+                    end: "+=100",
+                    scrub: 1
+                }
             })
             tl.to('.metodologia-descricao, .metodologia-itens', {
                 opacity: 1,
@@ -87,8 +94,8 @@ export default {
                 scrollTrigger: {
                     trigger: "#metodologia",
                     scrub: 2,
-                    start: "top center",
-                    end: "center 40%"
+                    start: "center center",
+                    end: "bottom end"
                 }
             })
         }, 1000);
@@ -98,10 +105,16 @@ export default {
 </script>
 
 <style lang="scss">
+#metodologia .container {
+    @media(min-width:850px) and (max-width:1100px) {
+        column-gap: 100px !important;
+    }
+}
+
 #metodologia .container,
 #metodologia .container .metodologia-row {
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     gap: 20px;
 }
 
@@ -119,22 +132,68 @@ export default {
     flex-direction: column !important;
 }
 
+#metodologia .container {
+    column-gap: 200px;
+    display: flex;
+    height: 100vh;
+
+}
+
 .metodologia-col1 {
-    width: 15% !important;
-    text-transform: uppercase;
-    color: var(--cinza-quase-claro);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    .cami-conteudo {
+        display: flex;
+        flex-direction: column;
+        color: var(--cinza);
+        row-gap: 20px;
+    }
 }
 
 .metodologia-col2 {
-    width: 85% !important;
+    width: 50% !important;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
 
     .metodologia-itens {
-        flex-basis: 60%;
-        font-size: 22px !important
+        flex-basis: 30%;
+        font-size: 22px !important;
+        color: var(--preto)
     }
 
     .metodologia-descricao {
-        flex-basis: 40%;
+        flex-basis: 70%;
     }
+}
+
+
+@media(max-width: 849px) {
+
+    #metodologia .container {
+        flex-direction: column !important;
+
+        .metodologia-col1,
+        .metodologia-col2 {
+            width: 100% !important;
+        }
+
+        .metodologia-col1 {
+            .metodologia-row {
+                flex-direction: column !important;
+            }
+
+            .cami-conteudo p,
+            .metodologia-descricao p{
+                line-height: 1.5em !important;
+                font-size: 13px !important;
+            }
+        }
+    }
+
+
 }
 </style>

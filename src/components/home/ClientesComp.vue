@@ -1,8 +1,12 @@
 <template>
     <section id="clientes">
-        <div class="container limit">
+        <div class="container limit-mid">
             <div class="clientes-title">
-                <h2>Veja o que dizem nossos clientes</h2>
+
+                <h2>
+                    <img src="seta-diagonal.png" class="seta-diagonal" />
+                    O que andam falando sobre nós
+                </h2>
             </div>
         </div>
         <div class="container-clientes clientes-wrapper">
@@ -10,13 +14,19 @@
                 <div v-for="cliente in clientes" :key="cliente.id" class="box-cliente">
                     <div class="box-cliente-in">
                         <div class="cliente-depoimento">
-                            <p>{{ cliente.depoimento }}</p>
+                            <video class="dep-videos" :poster="cliente.thumb" controls>
+                                <source :src="cliente.url">
+                            </video>
                         </div>
                         <div class="cliente-nome">
                             <span>{{ cliente.nome }}</span>
+                            <span>{{ cliente.empresa }}</span>
                         </div>
                         <div class="cliente-empresa">
-                            <span>{{ cliente.empresa }}</span>
+                            <a href="#">
+                                <span>Ver projeto
+                                    <img src="seta-diagonal.png" class="seta-diagonal"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -49,13 +59,26 @@ export default {
         }
     },
     created() {
-        axios.get('clientes.json')
+        axios.get('json/clientes.json')
             .then((response) => {
                 this.clientes = response.data.clientes.slice(0, 5)
             })
             .catch((error) => (console.log(error)))
     },
     mounted() {
+        let videos = document.querySelectorAll(".dep-videos");
+
+        videos.forEach(video => {
+            video.addEventListener('click', () => {
+                // Pausar todos os outros vídeos
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        })
+
         this.deps = document.querySelector('.depoimentos');
         setTimeout(() => {
             const tween = gsap.to(this.deps, {
@@ -91,7 +114,6 @@ export default {
 <style lang="scss">
 #clientes {
     h2 {
-        max-width: 360px;
         margin-bottom: 60px;
     }
 
@@ -112,23 +134,34 @@ export default {
         .box-cliente {
             flex: 0 0 auto;
             /* Adicionado */
-            width: 30vw;
-            max-width: 500px;
-            padding:20px;
+
+            width: 34vw;
+            max-width: 600px;
+            padding: 20px;
 
             .box-cliente-in {
                 border: 1px solid var(--cinza-claro);
                 border-radius: 20px;
-                padding: 40px 20px;
+                padding: 40px 30px 20px;
                 display: flex;
                 flex-wrap: wrap;
+            }
+
+            .dep-videos {
+                aspect-ratio: 16/9;
+                object-fit: cover;
             }
 
             .cliente-depoimento {
                 color: var(--cinza);
                 font-weight: 500;
                 flex-basis: 100%;
-                margin-bottom: 40px;
+                margin-bottom: 10px;
+
+                video {
+                    background-color: black;
+                    width: 100%;
+                }
 
                 p {
                     line-height: 1.5em !important;
@@ -137,14 +170,72 @@ export default {
 
             .cliente-nome {
                 flex-basis: 50%;
+                display: flex;
+                flex-direction: column;
                 font-size: 14px;
+
+                span:nth-of-type(2) {
+                    color: var(--cinza-quase-claro)
+                }
             }
 
             .cliente-empresa {
                 flex-basis: 50%;
-                color: var(--cinza-quase-claro);
-                font-size: 14px;
+                text-align: right;
+                align-self: center;
+
+                a {
+                    font-size: 22px;
+                    background-color: var(--cinza-quase-claro);
+                    border-radius: 50px;
+                    padding: 8px 12px 12px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+
+                    span {
+                        filter: invert(1) brightness(100);
+                        margin-right: -5px;
+
+                        img {
+                            max-width: 13px;
+                            transform: rotate(-90deg);
+                            object-fit: contain;
+                        }
+                    }
+
+                }
+
             }
         }
     }
-}</style>
+}
+
+@media(max-width: 1100px) {
+    .box-cliente {
+        width: 50vw !important;
+    }
+}
+
+@media(max-width: 750px) {
+    .box-cliente {
+
+        .box-cliente-in {
+            flex-direction: column;
+        }
+
+        .cliente-empresa a {
+            margin: 0 auto !important;
+            display: flex;
+            width: fit-content;
+        }
+
+        .cliente-nome {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    }
+}
+</style>

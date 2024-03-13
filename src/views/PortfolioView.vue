@@ -3,20 +3,21 @@
         <div class="blank-space"></div>
 
         <ul class="portfolio-projects">
-            <li class="projects-individual" v-for="proj in projs" :key="proj.id">
+            <li class="projects-individual proj-ind" v-for="proj in projs" :key="proj.id">
                 <router-link :to="{
-                    name: 'Project', params: {
-                        projectName: proj.title.rendered.toLowerCase().replace(/\s+/g, '-'),
-                        projectId: proj.id
-                    }
-                }">
+                name: 'Project', params: {
+                    projectId: proj.id,
+                    projectName: proj.slug
+                }
+            }">
                     <div class="project-tag">
                         <h3>{{ proj.title.rendered }}</h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">
                             {{ getTagName(tagId) }}</h3>
                     </div>
                     <img v-if="proj['_embedded'] && proj['_embedded']['wp:featuredmedia'] && proj['_embedded']['wp:featuredmedia'][0].source_url"
-                        :src="proj['_embedded']['wp:featuredmedia'][0].source_url" :alt="proj.title.rendered + '_thumb'">
+                        :src="proj['_embedded']['wp:featuredmedia'][0].source_url"
+                        :alt="proj.title.rendered + '_thumb'">
                     <div v-if="proj.categories.length > 0">
                         <ul class="portfolio-categories">
                             <li class="portfolio-category" v-for="categoryId in proj.categories" :key="categoryId">
@@ -38,11 +39,13 @@ import { defineComponent } from 'vue';
 gsap.registerPlugin(scrollTrigger);
 
 export default defineComponent({
+
     data() {
         return {
             projs: [],
             categories: {},
-            tags: {}
+            tags: {},
+            portLoaded: false
         }
     },
     methods: {
@@ -87,29 +90,32 @@ export default defineComponent({
         },
     },
     mounted() {
-        gsap.set(".projects-individual", {
-            opacity: 0,
-            scale: 0
-        })
-        this.carregaPortfolio().then(() => {
-            gsap.from(".projects-individual", {
+
+        if (!this.portLoaded) {
+            this.carregaPortfolio()
+        }
+        setTimeout(() => {
+            gsap.set(".proj-ind", {
                 opacity: 0,
                 scale: 0
             })
-            gsap.to(".projects-individual", {
+            gsap.to(".proj-ind", {
                 opacity: 1,
                 scale: 1,
                 duration: 1,
                 ease: "power4"
             })
-        });
+        }, 1000);
+
     }
 })
 </script>
+
 <style lang="scss">
-#portfolio{
+#portfolio {
     min-height: 50vh;
 }
+
 #portfolio li {
     list-style: none;
 }
@@ -130,19 +136,22 @@ export default defineComponent({
 
     .project-tag {
         position: absolute;
-        top: 10px;
-        left: 10px;
+        top: 30px;
+        left: 30px;
         font-size: 12px;
         display: flex;
         flex-direction: row;
         gap: 10px;
-        h3{
-            &:nth-of-type(1){
-                font-weight: 600;
-                text-transform: uppercase;
-            }
-            &:nth-of-type(2){
+        filter: invert(1);
+        mix-blend-mode: exclusion;
+
+        h3 {
+            &:nth-of-type(1) {
                 font-weight: 500;
+            }
+
+            &:nth-of-type(2) {
+                font-weight: 400;
             }
         }
 
@@ -161,14 +170,14 @@ export default defineComponent({
         flex-direction: row;
         gap: 10px;
         position: absolute;
-        top: 10px;
-        right: 10px !important;
+        top: 30px;
+        right: 30px;
         font-size: 13px;
 
         li {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(150, 150, 150, .7);
             color: var(--branco);
-            font-weight: 500;
+            font-weight: 400;
             padding: 5px 10px;
             border-radius: 20px;
         }

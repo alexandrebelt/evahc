@@ -6,7 +6,7 @@ import ProjectView from '@/views/ProjectView.vue'
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { gsap } from "gsap";
 import AboutView from '@/views/AboutView.vue'
-import { configGsap, initGsap } from '@/utils/gsapAll'
+import { configGsap } from '@/utils/gsapAll'
 gsap.registerPlugin(ScrollTrigger);
 
 const routes: Array<RouteRecordRaw> = [
@@ -27,16 +27,16 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/sobre-nos',
-    name: 'Sobre Nós',
+    name: 'Sobre nós',
     component: AboutView
   },
   {
-    path: '/portfolio/:projectId/:projectName',
+    path: '/portfolio/:projectName',
     name: 'Project',
     component: ProjectView,
+
     props: route => ({
       projectName: route.params.projectName,
-      projectId: route.params.projectId
     })
   }
 
@@ -48,13 +48,21 @@ const router = createRouter({
   routes
 })
 
+
 router.beforeEach((to, from, next) => {
-  document.querySelector("#nav")?.classList.add("animate-transition");
+
   setTimeout(() => {
-    configGsap()
-    window.scrollTo({ top: 0});
-    document.querySelector("#nav")?.classList.remove("animate-transition");
-  }, 2000);
+    document.querySelector("#nav")?.classList.add("animate-transition");
+    setTimeout(() => {
+      configGsap()
+    window.scrollTo({ top: 0 });
+    }, 500);
+    setTimeout(() => {
+      document.querySelector("#nav")?.classList.remove("animate-transition");
+      
+    }, 2000);
+  }, 1200);
+
   next()
 })
 

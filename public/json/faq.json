@@ -1,0 +1,20 @@
+{
+    "faq": [
+        {
+            "pergunta": "Qual a média do prazo de entrega?",
+            "resposta": "Hoje, a duração dos nossos projetos levam em média de 1 a 2 meses para serem concluídos, dependendo dos serviços contratados e do tempo necessário para a execução de cada um. Na proposta de orçamento, já incluímos um cronograma detalhado com os prazos correspondentes."
+        },
+        {
+            "pergunta": "Quais formatos de pagamento disponíveis?",
+            "resposta": "Temos três opções de pagamento disponíveis: <ol type='1'><li>À vista, com 5% de desconto.</li><li>50% do valor total no ato do pedido e os 50% restantes após 30 dias do início do contrato.</li><li>Parcelamento em até 12 vezes, com acréscimo de juros conforme política da plataforma de pagamento.</li></ol>"
+        },
+        {
+            "pergunta": "Quais formatos de arquivos serão entregues?",
+            "resposta": "<p>Com o objetivo de proporcionar total comodidade ao cliente, oferecemos uma variedade de formatos para atender a todas as suas necessidades:</p><br><p>Para uso pessoal em mídias sociais: PNG e JPEG.<br>Para impressão: AI, EPS e PDF (no perfil de cor CMYK).<br>Para edições: AI e EPS (RGB para uso em mídias digitais e CMYK para impressão), ideal para fornecimento a profissionais como social media ou designers para a criação de peças publicitárias.<br>Para sites e web: SVG.</p>"
+        },
+        {
+            "pergunta": "Vocês criam apenas logotipo?",
+            "resposta": "Nosso trabalho vai além da simples criação de logotipos. Desenvolvemos projetos de marca completos. Isso significa que estamos envolvidos em todas as etapas do processo, desde a concepção e estratégia inicial da marca até a sua expressão visual. O logotipo é apenas uma parte desse processo abrangente, que visa construir uma identidade única e coesa para sua marca."
+        }
+    ]
+}

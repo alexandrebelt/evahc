@@ -12,26 +12,42 @@ export default {
         const iview = ".intro-view";
         const tl = gsap.timeline();
         gsap.set(iview, { x: 0 })
-        gsap.set(iview, { x: 0 })
-
-        tl.to(iview, {
-            keyframes: {
-                "0%": { x: 0 },
-                "100%": { x: "-150vw" }
-            },
-            ease: "power4",
-            delay: 2,
-            duration: 2,
-        })
         gsap.set(".text-intro", {
-           opacity: 0
+            opacity: 0,
+            x: -50,
         })
-        gsap.to(".text-intro", {
-            opacity:1,
-            delay: 0.5,
+
+
+        gsap.to(iview, {
+            x: 0,
+            duration: 1,
             ease: "power4.out",
-            duration: 1
         })
+
+        tl.to(".text-intro", {
+            x: 0,
+            opacity: 1,
+            delay: 0.5,
+            ease: "linear",
+            duration: 1,
+        })
+        tl.to(".text-intro", {
+            x: 25,
+            opacity: 0,
+            ease: "linear",
+            duration: 0.5,
+            filter: " blur(10px)",
+        })
+        gsap.to(iview, {
+            x: "120vw",
+            delay: 2,
+            duration: 1,
+            filter: " blur(12px)",
+            ease: "power4.out"
+        })
+
+
+
     }
 
 }
@@ -47,14 +63,12 @@ export default {
     color: var(--branco);
 
     h2 {
-        font-family: var(--urbanist) !important;
-
+        font-family: var(--overused) !important;
         font-size: 48px;
         text-align: center;
         font-weight: 500;
 
         span sup {
-
             font-size: 25px;
         }
 

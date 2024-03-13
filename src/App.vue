@@ -55,123 +55,34 @@ export default defineComponent({
 
     initMagnets();
     configGsap();
-    window.removeEventListener('resize',initGsap())
-    window.addEventListener('resize',initGsap())
+    window.removeEventListener('resize', initGsap())
+    initGsap();
 
 
   },
   watch: {
     $route(to, from) {
-      this.showTransition = true;
-      this.carregaConteudo = false;
-      this.toName = `${to.name}`
+      if (this.transition) {
+        this.showTransition = false;
+      } else {
+        this.showTransition = true;
+        this.carregaConteudo = false;
+        this.toName = `${to.name}`
+      }
+
       setTimeout(() => {
         this.carregaConteudo = true;
       }, 1000);
       setTimeout(() => {
         this.showTransition = false;
-      }, 2000)
+      }, 3000)
     }
   }
 })
 </script>
 
 <style lang="scss">
-@import url('Responsive.scss');
-
-@font-face {
-  font-family: "Urbanist";
-  src: url('/src/assets/fonts/Urbanist-VariableFont_wght.ttf') format('truetype'),
-    url('/src/assets/fonts/Urbanist-Italic-VariableFont_wght.ttf') format('truetype')
-}
-
-@font-face {
-  font-family: "Overused";
-  src: url('/src/assets/fonts/OverusedGrotesk-Medium.otf') format('opentype'),
-    url('/src/assets/fonts/OverusedGrotesk-SemiBold.otf') format('opentype'),
-    url('/src/assets/fonts/OverusedGrotesk-Book.otf') format('opentype'),
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --branco: #ffffff;
-  --preto: #1C1D20;
-  --cinza: #6E6E6E;
-  --cinza-quase-claro: #999D9E;
-  --cinza-claro: #E5E6E6;
-  --container-width: 1440px;
-  --urbanist: "Urbanist";
-  --overused: "Overused";
-}
-
-
-html,
-body {
-  background-color: var(--branco);
-  position: relative;
-  overflow-x: hidden;
-  font-family: var(--urbanist);
-  font-size: 16px;
-  font-display: swap;
-}
-
-section {
-  min-height: 20vh
-}
-
-#app {
-  font-family: var(--urbanist);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--preto);
-}
-
-.container {
-  margin: 0 auto
-}
-.blank-space{
-  margin-bottom: 100px;
-}
-.container.limit {
-  max-width: 100%;
-  padding: 80px 20px;
-  /*width: 100%;*/
-}
-
-p {
-  line-height: 2em;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h2 {
-  font-size: 64px;
-  font-family: "Overused";
-  font-weight: 300;
-  line-height: 1.0em;
-}
-
-h4 {
-  font-size: 34px;
-  font-weight: 500;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+@import 'App.scss'
 </style>
 
 

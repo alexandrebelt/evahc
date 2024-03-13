@@ -10,7 +10,7 @@ export function initMagnets(){
         magnet.addEventListener('mousemove', function (event) {
             var magnetButton = event.currentTarget
             var bounding = magnetButton.getBoundingClientRect()
-            var magneticText = magnet.querySelectorAll(".btn-text-small")
+            var magneticText = magnet.querySelector(".btn-text-small")
 
             TweenMax.to(magnetButton, 1, {
                 x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,

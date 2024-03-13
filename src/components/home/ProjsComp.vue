@@ -16,7 +16,8 @@
                         </ul>
                     </div>
                     <img v-if="proj['_embedded'] && proj['_embedded']['wp:featuredmedia'] && proj['_embedded']['wp:featuredmedia'][0].source_url"
-                        :src="proj['_embedded']['wp:featuredmedia'][0].source_url" :alt="proj.title.rendered + '_thumb'">
+                        :src="proj['_embedded']['wp:featuredmedia'][0].source_url"
+                        :alt="proj.title.rendered + '_thumb'">
                 </router-link>
             </div>
         </div>
@@ -33,6 +34,7 @@ export default {
             tags: {},
             categories: {},
             dadosCarregados: false,
+            projsLoaded: false
         }
 
     },
@@ -63,7 +65,6 @@ export default {
         async fetchProjsData() {
             try {
                 const response = await axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
-
                 this.projs = response.data.slice(0, 3);
                 await this.loadTags();
                 await this.loadCategories();
@@ -73,7 +74,10 @@ export default {
         },
     },
     mounted() {
-        this.fetchProjsData().then(()=>initGsap())
+        if (!this.projsLoaded) {
+            this.fetchProjsData().then(() => initGsap())
+            this.projsLoaded = true
+        }
     }
 }
 </script>
@@ -81,75 +85,83 @@ export default {
 <style lang="scss">
 #home-projs {
     position: relative;
-    height: 350vh !important;
     background-color: var(--branco);
     z-index: 999;
 }
 
 .projects {
     position: relative;
-    height: 300vh !important;
-}
+    height: 350vh;
 
-.project-cover {
-    border-radius: 20px;
-    margin: 0 auto;
-    height: 67vh;
-    margin-bottom: 33vh;
-    width: 100%;
-    aspect-ratio: 10/5;
-    max-height: 70vh;
-    position: relative;
+    .project-cover {
+        border-radius: 100px;
+        position: relative;
+        height: auto;
+        max-height: 95vh;
 
-    img {
-
-        width: 100%;
-    }
-
-    .project-tags {
-        position: absolute;
-        top: 20px;
-    }
-
-    .project-tags {
-        position: absolute;
-        top: 30px !important;
-        left: 30px !important;
-        font-size: 12px;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-
-        :nth-of-type(2) {
-            font-weight: 500;
+        .project-tags {
+            position: absolute;
+            top: 20px;
+            filter: invert(1);
+            mix-blend-mode: exclusion;
         }
 
-    }
+        .project-tags {
+            position: absolute;
+            top: 30px !important;
+            left: 30px !important;
+            font-size: 13px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            filter: invert(1);
+            mix-blend-mode: exclusion;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        border-radius: 20px;
-    }
+            h3 {
+                text-transform: lowercase;
 
-    .project-category ul {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 12px;
+                &:first-letter {
+                    text-transform: uppercase;
+                }
+            }
 
-        li {
-            background: rgba(0, 0, 0, 0.4);
-            color: var(--branco);
-            font-family: var(--overused);
-            list-style: none;
-            padding: 5px 10px;
+            :nth-of-type(1) {
+                font-weight: 600;
+            }
+
+            :nth-of-type(2) {
+                font-weight: 400;
+            }
+
+
+        }
+
+        img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
             border-radius: 20px;
+        }
+
+        .project-category ul {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 12px;
+
+            li {
+                background: rgba(150, 150, 150, .7);
+                color: var(--branco);
+                font-family: var(--overused);
+                list-style: none;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
         }
     }
 }
