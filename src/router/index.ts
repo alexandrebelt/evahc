@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import OrcamentoView from '../views/OrcamentoView.vue'
-import PortfolioView from '@/views/PortfolioView.vue'
-import ProjectView from '@/views/ProjectView.vue'
+import HomeView from '../views/home/HomeView.vue'
+import OrcamentoView from '../views/orcamento/OrcamentoView.vue'
+import PortfolioView from '@/views/portfolio/PortfolioView.vue'
+import ProjectView from '@/views/project/ProjectView.vue'
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { gsap } from "gsap";
-import AboutView from '@/views/AboutView.vue'
-import { configGsap } from '@/utils/gsapAll'
+import AboutView from '@/views/about/AboutView.vue'
+import { configGsap, initScrollLetters } from '@/utils/gsapAll'
 gsap.registerPlugin(ScrollTrigger);
 
 const routes: Array<RouteRecordRaw> = [
@@ -50,7 +50,7 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-
+  
   setTimeout(() => {
     document.querySelector("#nav")?.classList.add("animate-transition");
     setTimeout(() => {
@@ -64,6 +64,8 @@ router.beforeEach((to, from, next) => {
   }, 1200);
 
   next()
+  
 })
+
 
 export default router

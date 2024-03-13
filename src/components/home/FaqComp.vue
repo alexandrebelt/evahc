@@ -3,7 +3,7 @@
         <div class="container limit-mid">
             <div class="faq-col col1">
                 <h2>
-                    <img src="seta-diagonal.png" class="seta-diagonal" />
+                    <img src="imgs/seta-diagonal.png" class="seta-diagonal" />
                     Dúvidas frequentes
                 </h2>
                 <p>Não encontrou o que precisava ou possui questões mais complexas? Fale diretamente com a gente pelo
@@ -41,10 +41,7 @@ export default {
     },
     created() {
         axios.get('json/faq.json')
-            .then((response) => (this.itens = response.data.faq)).
-            then(() => {
-                console.log(this.itens)
-            })
+            .then((response) => (this.itens = response.data.faq))
             .catch((error) => (console.log(error)))
     },
     mounted() {

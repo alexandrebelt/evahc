@@ -3,7 +3,7 @@
         <div class="container limit-mid">
             <div class="metodologia-col1">
                 <h2>
-                    <img class="seta-diagonal" src="seta-diagonal.png" />
+                    <img class="seta-diagonal" src="imgs/seta-diagonal.png" />
                     Conheça a C.A.M.I
                 </h2>
                 <div class="cami-conteudo">

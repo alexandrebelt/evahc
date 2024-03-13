@@ -2,7 +2,7 @@
     <div class="menu-mobile-btn">
         <div class="menu-mobile">
 
-            <div id="mobile-btn" :class="{ 'router-color': isHome }"  class="btn-action">
+            <div id="mobile-btn" :class="{ 'router-color': isHome }" class="btn-action">
                 <span :class="{ 'open-mobile-menu': mostraMenu }">
                     Menu
                 </span>
@@ -42,16 +42,16 @@ export default {
         let btnAction = document.querySelectorAll(".btn-action")
         let btnScroll = document.querySelector(".btn-menu-scroll")
         let navLinks = document.querySelector("#nav-links");
+
         const tl = gsap.timeline();
         gsap.set('.btn-menu-scroll', { y: -200 })
         gsap.from('.btn-menu-scroll', { y: -200 })
         gsap.to(".btn-menu-scroll", {
             y: 0,
             duration: 1,
-            ease: "bounce.in",
             scrollTrigger: {
                 trigger: "html",
-                start: "2% top",    
+                start: "2% top",
                 end: "+=200",
                 scrub: true,
                 invalidateOnRefresh: true,
@@ -79,7 +79,11 @@ export default {
                 end: "+=200"
             }
         })
-
+        mobileLinks.forEach((mobileLink)=>{
+            mobileLink.addEventListener('click', ()=>{
+                gsap.to('.btn-menu-scroll', { y: -200 })
+            })
+        })
         $(btnAction).each((index, animateClick) => {
             $(animateClick).on("click", () => {
                 if (this.mostraMenu) {
@@ -99,8 +103,8 @@ export default {
                         ease: "power4.out",
                     })
                     btnScroll.classList.remove('active-menu')
-                    this.mostraMenu = false;    
-                    gsap.to('.btn-menu-scroll', { y: -200 })
+                    this.mostraMenu = false;
+                     
 
                 } else {
                     btnScroll.classList.add('active-menu')
@@ -109,7 +113,7 @@ export default {
 
                     gsap.to(container, {
                         x: 0,
-                        duration: 1.5,
+                        duration: 0.3,
                         ease: "power4.out"
                     })
                     gsap.to(mobileLinks, {
@@ -135,6 +139,53 @@ export default {
 <style lang="scss">
 .freezeMenu {
     transform: none !important;
+}
+
+.btn-menu-scroll {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: var(--preto);
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+    z-index: 100;
+
+    &:hover {
+        background-color: var(--cinza-quase-claro);
+    }
+
+    span {
+        background-color: var(--branco) !important;
+        width: 100%;
+        height: 2px;
+    }
+
+}
+.active-menu {
+    transform: none !important;
+
+    span {
+        &:nth-of-type(1) {
+            transform: rotate(45deg) translate(5px, 4.5px);
+        }
+
+        &:nth-of-type(2) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+    }
+}
+
+.btn-menu-scroll span {
+    transition: 0.3s;
 }
 
 .btn-menu-mobile {

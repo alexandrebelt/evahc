@@ -53,11 +53,12 @@ export default defineComponent({
       smooth: 'easeOutExpo',
     });
 
-    initMagnets();
-    configGsap();
-    window.removeEventListener('resize', initGsap())
-    initGsap();
-
+    setTimeout(() => {
+      initMagnets();
+      configGsap();
+      window.removeEventListener('resize', initGsap())
+      initGsap();
+    }, 1000);
 
   },
   watch: {
@@ -84,5 +85,3 @@ export default defineComponent({
 <style lang="scss">
 @import 'App.scss'
 </style>
-
-

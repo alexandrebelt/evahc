@@ -1,0 +1,146 @@
+.post-individual {
+
+    .proj-content {
+
+        h4 {
+            font-size: 21px !important;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: var(--preto)
+        }
+
+        .wp-block-column-is-layout-flow p {
+            color: var(--cinza)
+        }
+    }
+
+    .post-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .post-top-col {
+            span{
+                text-transform: uppercase;
+                color:var(--cinza)
+            }
+            span,
+            h3 {
+                font-size: 13px;
+            }
+
+        }
+
+        .post-top-col {
+            &:nth-of-type(1) {
+                h3 {
+                    font-weight: 500;
+                }
+
+            }
+        }
+
+        .post-categories {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding: 20px;
+            top: 10px !important;
+            right: 10px !important;
+
+
+            h3 {
+                background: rgba(0, 0, 0, 0.4);
+                color: var(--branco);
+                font-weight: 500;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+
+        }
+    }
+
+    .wp-block-columns {
+        margin: 80px 0;
+
+        .data-proj {
+            order: 0;
+        }
+
+        .wp-block-column-is-layout-flow {
+            order: 1
+        }
+
+        &.is-layout-flex {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+
+            .wp-block-column-is-layout-flow {
+                max-width: 600px;
+            }
+        }
+
+    }
+
+
+
+
+    .post-cliente {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 12px !important;
+        font-family: var(--overused);
+        padding: 20px;
+
+        span {
+            font-weight: 500;
+        }
+
+
+    }
+
+    h2 {
+        font-size: 42px !important;
+        margin-bottom: 40px;
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+
+.data-proj {
+    width: 30%;
+
+    h2 {
+        text-transform: lowercase;
+        margin-bottom: 20px;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    em {
+        font-size: 23px;
+        font-weight: 300;
+
+        &:before,
+        &:after {
+            content: '"';
+        }
+    }
+
+    p {
+        text-transform: capitalize;
+        margin-top: 40px;
+        font-weight: 300;
+        font-size: 23px;
+        color: var(--cinza-quase-claro);
+    }
+}
