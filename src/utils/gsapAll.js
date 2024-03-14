@@ -9,7 +9,7 @@ export function initScrollLetters() {
 
   let direction = 1; // 1 = forward, -1 = backward scroll
 
-  const roll1 = roll(".banner-text", { duration: 18 }),
+  const roll1 = roll(".banner-text-wrap", { duration: 18 }),
     scroll = ScrollTrigger.create({
       trigger: document.querySelector('[data-scroll-container]'),
       onUpdate(self) {
@@ -37,7 +37,7 @@ export function initScrollLetters() {
         el.parentNode.appendChild(clone);
         return clone;
       }),
-      positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], { position: "relative", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth) }));
+      positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], { position: "absolute", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth) }));
     positionClones();
     elements.forEach((el, i) => tl.to([el, clones[i]], { xPercent: reverse ? 100 : -100, ...vars }, 0));
     window.addEventListener("resize", () => {

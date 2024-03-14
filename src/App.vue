@@ -1,20 +1,24 @@
 <template>
   <!--COMPONENTE-->
+  
   <transition name="fade" mode="out-in">
     <HeaderComp />
   </transition>
+  <LoadingView />
+  <div v-if="!loading">
   <IntroView />
-  <TransitionView :routeName="toName" :projectTitle="$route.params.projectName" v-if="showTransition" />
+    <TransitionView :routeName="toName" :projectTitle="$route.params.projectName" v-if="showTransition" />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <div v-if="carregaConteudo">
+          <component :is="Component" />
+        </div>
+      </transition>
+    </router-view>
+  </div>
+    
+    <FooterComp />
 
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <div v-if="carregaConteudo">
-        <component :is="Component" />
-      </div>
-    </transition>
-  </router-view>
-
-  <FooterComp />
 </template>
 
 <script lang="js">
@@ -23,6 +27,7 @@ import FooterComp from '/src/components/FooterComp.vue';
 import HeaderComp from '/src/components/HeaderComp.vue';
 import IntroView from '/src/components/IntroView.vue';
 import TransitionView from '/src/components/TransitionView.vue';
+import LoadingView from '/src/components/LoadingView.vue';
 import { defineComponent } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -36,13 +41,15 @@ export default defineComponent({
     FooterComp,
     HeaderComp,
     IntroView,
-    TransitionView
+    TransitionView,
+    LoadingView
   },
   data() {
     return {
       showTransition: false,
       carregaConteudo: true,
-      toName: ''
+      toName: '',
+      loading: true
     }
   },
 
@@ -59,6 +66,10 @@ export default defineComponent({
       window.removeEventListener('resize', initGsap())
       initGsap();
     }, 1000);
+
+    window.addEventListener('load', () => {
+      this.loading = false;
+    });
 
   },
   watch: {

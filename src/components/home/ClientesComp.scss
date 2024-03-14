@@ -36,6 +36,7 @@
             .dep-videos {
                 aspect-ratio: 16/9;
                 object-fit: cover;
+                
             }
 
             .cliente-depoimento {
@@ -43,10 +44,12 @@
                 font-weight: 500;
                 flex-basis: 100%;
                 margin-bottom: 10px;
+                cursor:pointer;
 
                 video {
                     background-color: black;
                     width: 100%;
+                    
                 }
 
                 p {

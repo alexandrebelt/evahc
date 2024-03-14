@@ -12,8 +12,12 @@
         </div>
       </div>
       <div class="container limit">
-        <div class="banner-text">
-          <h1>Design, Estratégia & Propósito—</h1>
+        <div class="big-name">
+          <div class="banner-text">
+            <div class="banner-text-wrap">
+              <h1>Design, Estratégia & Propósito—</h1>
+            </div>
+          </div>
         </div>
       </div>
     </section>
