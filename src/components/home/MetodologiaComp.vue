@@ -110,6 +110,7 @@ export default {
     p,
     .metodologia-descricao {
         font-weight: 300 !important;
+        font-size: 18px;
     }
 
     @media(min-width:850px) and (max-width:1100px) {
