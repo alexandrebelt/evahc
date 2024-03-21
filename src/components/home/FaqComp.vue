@@ -145,7 +145,7 @@ export default {
                 max-height: 0px;
                 overflow: hidden;
                 ol{
-                    padding-left: 25px;
+                    padding-left: 30px;
                 }
                 margin-bottom: 20px;
                 font-weight: 300;
