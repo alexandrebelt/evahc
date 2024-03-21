@@ -105,7 +105,10 @@ section {
   -moz-osx-font-smoothing: grayscale;
   color: var(--preto);
 }
-
+p{
+  font-size: 18px;
+  font-weight: 300;
+}
 .container {
   margin: 0 auto
 }

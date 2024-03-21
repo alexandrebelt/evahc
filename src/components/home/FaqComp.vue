@@ -123,6 +123,7 @@ export default {
 
         p {
             color: var(--cinza-quase-claro);
+            font-weight: 300;
         }
 
         .faq-row {
@@ -147,7 +148,7 @@ export default {
                     padding-left: 25px;
                 }
                 margin-bottom: 20px;
-                font-weight: 400;
+                font-weight: 300;
                 transition: 0.6s;
             }
         }
