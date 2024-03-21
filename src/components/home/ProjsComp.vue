@@ -2,10 +2,14 @@
     <section id="home-projs">
         <div class="projects container limit">
             <div class="project-cover" v-for="proj in projs" :key="proj.id">
-                <router-link
-                    :to="{ name: 'Project', params: { projectName: proj.title.rendered.toLowerCase().replace(/\s+/g, '-'), projectId: proj.id } }">
+                <router-link :to="{
+                name: 'Project', params: {
+                    projectSlug: proj.slug,
+                    projectName: proj.title.rendered 
+                }
+            }" @click="$store.commit('setProjectName', proj.title.rendered)">
                     <div class="project-tags">
-                        <h3>{{ proj.title.rendered }}</h3>
+                        <h3 v-html="proj.title.rendered"></h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">{{ getTagName(tagId) }}</h3>
                     </div>
                     <div class="project-category">
@@ -39,8 +43,9 @@ export default {
 
     },
     methods: {
+
         loadTags() {
-            return axios.get('https://evahc.com.br/wp-json/wp/v2/tags')
+            return axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/tags')
                 .then((response) => {
                     response.data.forEach((tag) => {
                         this.tags[tag.id] = tag.name
@@ -52,7 +57,7 @@ export default {
         },
 
         loadCategories() {
-            return axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
+            return axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/categories')
                 .then((response) => {
                     response.data.forEach((category) => {
                         this.categories[category.id] = category.name;
@@ -64,7 +69,7 @@ export default {
         },
         async fetchProjsData() {
             try {
-                const response = await axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
+                const response = await axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/posts?_embed')
                 this.projs = response.data.slice(0, 3);
                 await this.loadTags();
                 await this.loadCategories();

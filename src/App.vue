@@ -1,13 +1,13 @@
 <template>
   <!--COMPONENTE-->
-  
+
   <transition name="fade" mode="out-in">
     <HeaderComp />
   </transition>
   <LoadingView />
   <div v-if="!loading">
-  <IntroView />
-    <TransitionView :routeName="toName" :projectTitle="$route.params.projectName" v-if="showTransition" />
+    <IntroView />
+    <TransitionView :routeName="toName" :projectTitle="$store.state.projectName" v-if="showTransition" />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <div v-if="carregaConteudo">
@@ -16,8 +16,8 @@
       </transition>
     </router-view>
   </div>
-    
-    <FooterComp />
+
+  <FooterComp />
 
 </template>
 
@@ -28,7 +28,7 @@ import HeaderComp from '/src/components/HeaderComp.vue';
 import IntroView from '/src/components/IntroView.vue';
 import TransitionView from '/src/components/TransitionView.vue';
 import LoadingView from '/src/components/LoadingView.vue';
-import { defineComponent } from 'vue';
+import { defineComponent, inject, onMounted } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { initMagnets } from './utils/magneticElements.js';
@@ -49,11 +49,12 @@ export default defineComponent({
       showTransition: false,
       carregaConteudo: true,
       toName: '',
-      loading: true
+      loading: true,
     }
   },
 
   mounted() {
+    
     const scroll = new LocomotiveScroll({
       //@ts-expect-error - Reconhece de qualquer maneira o el
       el: document.querySelector("[router-view]"),
@@ -73,7 +74,9 @@ export default defineComponent({
 
   },
   watch: {
+
     $route(to, from) {
+
       if (this.transition) {
         this.showTransition = false;
       } else {

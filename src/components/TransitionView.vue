@@ -1,6 +1,6 @@
 <template>
     <div v-if="$route.name === 'Project'" class="routeView">
-        <h2 class="text-route">{{ projectTitle.replace(/-/g, ' ') }}</h2>
+        <h2 class="text-route" v-html="projectTitle.replace(/-/g, ' ')"></h2>
     </div>
     <div v-else class="routeView">
         <h2 class="text-route">{{ routeName }}</h2>

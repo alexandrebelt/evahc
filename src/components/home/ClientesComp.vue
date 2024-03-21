@@ -23,7 +23,7 @@
                             <span>{{ cliente.empresa }}</span>
                         </div>
                         <div class="cliente-empresa">
-                            <a :href="cliente.projeto">
+                            <a :href="cliente.pro">
                                 <span>Ver projeto
                                     <img src="imgs/seta-diagonal.png" class="seta-diagonal"></span>
                             </a>
@@ -59,7 +59,7 @@ export default {
         }
     },
     created() {
-        axios.get('json/clientes.json')
+        axios.get('https://gerenciamento.evahc.com.br/wp-content/uploads/clientes.json')
             .then((response) => {
                 this.clientes = response.data.clientes.slice(0, 5)
             })

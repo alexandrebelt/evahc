@@ -7,6 +7,9 @@
 }
 
 .btn-header-orcamento {
+    &:hover{
+        background-color: var(--cinza);
+    }
     background-color: var(--preto);
     color: var(--branco);
     border-radius: 50px;
@@ -118,6 +121,9 @@ nav {
     }
 
     .btn-fundo-cinza {
+        &:hover{
+            background-color: var(--preto);
+        }
         background: var(--cinza-quase-claro);
         border-radius: 50px;
     }

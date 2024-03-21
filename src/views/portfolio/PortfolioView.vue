@@ -6,12 +6,12 @@
             <li class="projects-individual proj-ind" v-for="proj in projs" :key="proj.id">
                 <router-link :to="{
                 name: 'Project', params: {
-                    projectId: proj.id,
-                    projectName: proj.slug
+                    projectSlug: proj.slug,
+                    projectName: proj.title.rendered
                 }
-            }">
+            }" @click="$store.commit('setProjectName', proj.title.rendered)">
                     <div class="project-tag">
-                        <h3>{{ proj.title.rendered }}</h3>
+                        <h3 v-html="proj.title.rendered"></h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">
                             {{ getTagName(tagId) }}</h3>
                     </div>
@@ -51,7 +51,7 @@ export default defineComponent({
     methods: {
 
         loadCategories() {
-            axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
+            axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/categories')
                 .then((response) => {
                     response.data.forEach((category) => {
                         this.categories[category.id] = category.name;
@@ -65,7 +65,7 @@ export default defineComponent({
             return this.categories[categoryId];
         },
         loadTags() {
-            axios.get('https://evahc.com.br/wp-json/wp/v2/tags')
+            axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/tags')
                 .then((response) => {
                     response.data.forEach((tag) => {
                         this.tags[tag.id] = tag.name;
@@ -77,7 +77,7 @@ export default defineComponent({
         },
         async carregaPortfolio() {
             try {
-                axios.get('https://evahc.com.br/wp-json/wp/v2/posts?_embed')
+                axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/posts?_embed')
                     .then((response) => {
                         this.projs = response.data
                         this.loadCategories();
@@ -94,6 +94,7 @@ export default defineComponent({
         if (!this.portLoaded) {
             this.carregaPortfolio()
         }
+        this.carregaPortfolio();
         setTimeout(() => {
             gsap.set(".proj-ind", {
                 opacity: 0,

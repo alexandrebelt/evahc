@@ -106,6 +106,12 @@ export default {
 
 <style lang="scss">
 #metodologia .container {
+
+    p,
+    .metodologia-descricao {
+        font-weight: 300 !important;
+    }
+
     @media(min-width:850px) and (max-width:1100px) {
         column-gap: 100px !important;
     }
@@ -187,7 +193,7 @@ export default {
             }
 
             .cami-conteudo p,
-            .metodologia-descricao p{
+            .metodologia-descricao p {
                 line-height: 1.5em !important;
                 font-size: 13px !important;
             }

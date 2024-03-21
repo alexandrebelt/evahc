@@ -1,396 +1,402 @@
-    @media(min-width:1550px) {
-        .sobre-banner-container {
-            //max-height: 900px;
+.wp-block-columns.is-layout-flex.wp-container-core-columns-layout-1.wp-block-columns-is-layout-flex {
+    max-width: 1700px;
+    margin: 100px auto;
+}
+
+@media(min-width:1550px) {
+    .sobre-banner-container {
+        //max-height: 900px;
+
+        img {
+            object-position: center 30%
+        }
+    }
+}
+
+@media(max-width: 1350px) and (min-width: 850px) {
+    .metodologia-descricao {
+        font-size: 1.3vw;
+    }
+
+    .cami-conteudo {
+        font-size: 1.3vw;
+    }
+
+}
+
+@media(max-width: 1350px) {
+
+    .post-content {
+        .wp-block-columns {
+            flex-direction: column;
+
+            .wp-block-column {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+    }
+
+    .wp-block-column.data-proj {
+        h2 {
+            font-size: 22px !important;
+            margin-bottom: 10px;
+        }
+
+        em {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    }
+}
+
+@media(max-width:1050px) {
+
+    footer {
+        .btn-orcamento-wrapper {
+            margin: 120px 0 !important;
+        }
+    }
+}
+
+@media(max-width:1050px) and (min-width:751px) {
+    .sobre-banner-container .sobre-banner-col:nth-of-type(1) {
+        width: 70%;
+        min-width: 390px;
+
+        .sobre-banner-text {
+            padding: 30px !important;
+        }
+    }
+}
+
+@media(max-width:850px) {
+
+    .routeView,
+    .intro-view {
+        h2 {
+            font-size: 32px !important;
+            max-width: 300px;
+        }
+    }
+
+    #home-projs {
+
+        height: 100vh;
+        min-height: 2300px !important;
+        max-height: 2300px !important;
+        background-color: var(--branco);
+        z-index: 999;
+
+        .project-cover {
+            height: 50vh;
+            width: 100%;
+
+        }
+    }
+
+    #metodologia {
+        .metodologia-descricao {
+            font-size: 1.5vw;
+        }
+        
+    }
+}
+
+
+
+@media(max-width: 750px) {
+    .blank-space {
+        margin-bottom: 0px !important;
+    }
+
+    /*HEADER*/
+    nav {
+        span {
+            font-size: 1em !important;
+
+            sup {
+                font-size: 0.55em;
+            }
+        }
+
+        .router-link-active,
+        .nav-col.router-color a {
+            //padding: 0;
+        }
+    }
+
+    footer {
+        h2 {
+            font-size: 32px;
+            max-width: 500px !important;
+        }
+
+        .btn-orcamento-in {
+            top: -70px !important;
+            right: unset !important;
+            left: 50%;
+            transform: translatex(-50%) !important;
+
+            a {
+                padding: 20px !important;
+            }
+        }
+
+        .btn-contato {
+            flex-direction: column;
+            display: inline-flex;
+            width: fit-content;
+            margin: 0 auto;
+
+            a {
+                display: inline;
+                text-align: center;
+            }
+        }
+
+        .credits-social {
+            flex-direction: column-reverse !important;
+            text-align: center;
+
+            .footer-social {
+                flex-direction: column !important;
+                row-gap: 10px !important;
+            }
+
+        }
+    }
+
+    /*HOME*/
+    /*banners*/
+    #home-banner h1 {
+        font-size: 125px !important;
+    }
+
+
+    /*metodologia*/
+    #metodologia h2 {
+        font-size: 30px !important;
+    }
+
+    #metodologia .pin-spacer {
+        display: none;
+    }
+
+    .metodologia-col1 {
+        display: none;
+    }
+
+    #home .metodologia-col2 {
+        width: 100% !important;
+
+        .metodologia-row {
+            flex-direction: column !important;
+        }
+    }
+
+
+
+    #metodologia {
+        .metodologia-row {
+            padding-top: 5px !important;
+            margin-bottom: 5px !important;
+            gap: 10px !important;
+
+            .metodologia-itens {
+                font-size: 10px !important;
+            }
+        }
+
+        .metodologia-descricao {
+            font-size: 12px !important;
+        }
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 15px !important;
 
             img {
-                object-position: center 30%
+                max-width: 20px;
             }
         }
     }
 
-    @media(max-width: 1350px) and (min-width: 850px) {
-        .metodologia-descricao {
-            font-size: 1.3vw;
+
+
+
+
+    /*clientes*/
+    #clientes {
+        .box-cliente {
+            width: 100vw !important;
+            max-width: unset !important;
+            padding: 10px !important;
         }
 
-        .cami-conteudo {
-            font-size: 1.3vw;
+        video {
+            width: 320px !important;
+        }
+
+        .cliente-depoimento {
+            justify-content: center;
+            display: flex;
         }
 
     }
 
-    @media(max-width: 1350px) {
+    /*faq*/
+    #faq .container {
+        flex-direction: column;
 
-        .post-content {
-            .wp-block-columns {
-                flex-direction: column;
-
-                .wp-block-column {
-                    width: 100% !important;
-                    max-width: 100% !important;
-                }
-            }
+        .faq-col.col1 {
+            width: 100% !important;
         }
+    }
 
-        .wp-block-column.data-proj {
-            h2 {
-                font-size: 22px !important;
-                margin-bottom: 10px;
-            }
 
-            em {
-                font-size: 18px;
+    /*SOBRE NÓS*/
+    .sobre-banner-text {
+        h2 {
+            font-size: 28px !important;
+            font-family: var(--overused);
+        }
+    }
+
+    .sobre-banner-container {
+        flex-direction: column-reverse !important;
+
+        .sobre-banner-text {
+            padding: 30px !important;
+
+
+            h4 {
+                font-size: 25px;
             }
 
             p {
-                font-size: 14px;
-                margin-top: 10px;
+                font-size: 11px;
+                margin: 20px 0px 0px !important;
+            }
+
+            em {
+                font-size: 11px !important;
+                max-width: 180px !important;
             }
         }
     }
 
-    @media(max-width:1050px) {
+    #servicos {
 
-        footer {
-            .btn-orcamento-wrapper {
-                margin: 120px 0 !important;
-            }
-        }
-    }
-
-    @media(max-width:1050px) and (min-width:751px) {
-        .sobre-banner-container .sobre-banner-col:nth-of-type(1) {
-            width: 70%;
-            min-width: 390px;
-
-            .sobre-banner-text {
-                padding: 30px !important;
-            }
-        }
-    }
-
-    @media(max-width:850px) {
-
-        .routeView,
-        .intro-view {
-            h2 {
-                font-size: 32px !important;
-                max-width: 300px;
-            }
-        }
-
-        #home-projs {
-
-            height: 100vh;
-            min-height: 2300px !important;
-            max-height: 2300px !important;
-            background-color: var(--branco);
-            z-index: 999;
-
-            .project-cover {
-                height: 50vh;
-                width: 100%;
-
-            }
-        }
-
-        #metodologia {
-            .metodologia-descricao {
-                font-size: 1.5vw;
-            }
-        }
-    }
-
-
-
-    @media(max-width: 750px) {
-        .blank-space {
-            margin-bottom: 0px !important;
-        }
-
-        /*HEADER*/
-        nav {
-            span {
-                font-size: 1em !important;
-
-                sup {
-                    font-size: 0.55em;
-                }
-            }
-
-            .router-link-active,
-            .nav-col.router-color a {
-                //padding: 0;
-            }
-        }
-
-        footer {
-            h2 {
-                font-size: 32px;
-                max-width: 500px !important;
-            }
-
-            .btn-orcamento-in {
-                top: -70px !important;
-                right: unset !important;
-                left: 50%;
-                transform: translatex(-50%) !important;
-
-                a {
-                    padding: 20px !important;
-                }
-            }
-
-            .btn-contato {
-                flex-direction: column;
-                display: inline-flex;
-                width: fit-content;
-                margin: 0 auto;
-
-                a {
-                    display: inline;
-                    text-align: center;
-                }
-            }
-
-            .credits-social {
-                flex-direction: column-reverse !important;
-                text-align: center;
-
-                .footer-social {
-                    flex-direction: column !important;
-                    row-gap: 10px !important;
-                }
-
-            }
-        }
-
-        /*HOME*/
-        /*banners*/
-        #home-banner h1 {
-            font-size: 125px !important;
-        }
-
-
-        /*metodologia*/
-        #metodologia h2 {
-            font-size: 30px !important;
-        }
-
-        #metodologia .pin-spacer {
-            display: none;
-        }
-
-        .metodologia-col1 {
-            display: none;
-        }
-
-        #home .metodologia-col2 {
-            width: 100% !important;
-
-            .metodologia-row {
-                flex-direction: column !important;
-            }
-        }
-
-
-
-        #metodologia {
-            .metodologia-row {
-                padding-top: 5px !important;
-                margin-bottom: 5px !important;
-                gap: 10px !important;
-
-                .metodologia-itens {
-                    font-size: 10px !important;
-                }
-            }
-
-            .metodologia-descricao {
-                font-size: 12px !important;
-            }
-
-            h2 {
-                margin-top: 10px;
-                margin-bottom: 15px !important;
-
-                img {
-                    max-width: 20px;
-                }
-            }
-        }
-
-
-
-
-
-        /*clientes*/
-        #clientes {
-            .box-cliente {
-                width: 100vw !important;
-                max-width: unset !important;
-                padding: 10px !important;
-            }
-
-            video {
-                width: 320px !important;
-            }
-
-            .cliente-depoimento {
-                justify-content: center;
-                display: flex;
-            }
-
-        }
-
-        /*faq*/
-        #faq .container {
+        .servicos-itens {
             flex-direction: column;
+            row-gap: 40px;
 
-            .faq-col.col1 {
-                width: 100% !important;
+            h4 {
+                font-size: 25px;
             }
         }
+    }
 
+    /*PROJECTS*/
+    .portfolio-projects {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 10px !important;
+    }
 
-        /*SOBRE NÓS*/
-        .sobre-banner-text {
+    #portfolio .projects-individual {
+        aspect-ratio: 10/5 !important;
+        flex-basis: 100% !important;
+        width: 100%;
+
+        .portfolio-categories {
+            top: unset !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            font-size: 11px !important;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+        }
+
+        .project-tag {
+            font-size: 11px !important;
+            display: flex;
+            flex-direction: column !important;
+            gap: 0px !important;
+            top: 20px !important;
+            left: 20px !important;
+
+            h3 {
+                line-height: 1.2em;
+            }
+
+        }
+
+        /*Transition*/
+
+    }
+
+    /*SINGLE PROJECT*/
+    .post-individual {
+        .wp-block-columns {
+            margin: 40px 0 !important;
+
+            &.is-layout-flex {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                justify-content: space-between;
+
+                .wp-block-column-is-layout-flow {
+                    max-width: 100%;
+                }
+            }
+
             h2 {
                 font-size: 28px !important;
-                font-family: var(--overused);
-            }
-        }
-
-        .sobre-banner-container {
-            flex-direction: column-reverse !important;
-
-            .sobre-banner-text {
-                padding: 30px !important;
-
-
-                h4 {
-                    font-size: 25px;
-                }
-
-                p {
-                    font-size: 11px;
-                    margin: 20px 0px 0px !important;
-                }
-
-                em {
-                    font-size: 11px !important;
-                    max-width: 180px !important;
-                }
-            }
-        }
-
-        #servicos {
-
-            .servicos-itens {
-                flex-direction: column;
-                row-gap: 40px;
-
-                h4 {
-                    font-size: 25px;
-                }
-            }
-        }
-
-        /*PROJECTS*/
-        .portfolio-projects {
-            display: flex;
-            flex-wrap: wrap;
-            grid-gap: 10px !important;
-        }
-
-        #portfolio .projects-individual {
-            aspect-ratio: 10/5 !important;
-            flex-basis: 100% !important;
-            width: 100%;
-
-            .portfolio-categories {
-                top: unset !important;
-                bottom: 20px !important;
-                right: 20px !important;
-                font-size: 11px !important;
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-
+                margin-bottom: 20px;
             }
 
-            .project-tag {
-                font-size: 11px !important;
-                display: flex;
-                flex-direction: column !important;
-                gap: 0px !important;
-                top:20px !important;
-                left:20px !important;
-
-                h3 {
-                    line-height: 1.2em;
-                }
-
+            p {
+                font-size: 12px !important;
+                line-height: 1.7em;
             }
 
-            /*Transition*/
-
-        }
-
-        /*SINGLE PROJECT*/
-        .post-individual {
-            .wp-block-columns {
-                margin: 40px 0 !important;
-
-                &.is-layout-flex {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 40px;
-                    justify-content: space-between;
-
-                    .wp-block-column-is-layout-flow {
-                        max-width: 100%;
-                    }
-                }
-
-                h2 {
-                    font-size: 28px !important;
-                    margin-bottom: 20px;
-                }
-
-                p {
-                    font-size: 12px !important;
-                    line-height: 1.7em;
-                }
-
-            }
-        }
-
-        .post-top {
-
-            .post-categories,
-            .post-cliente {
-                gap: 5px !important;
-                padding: 10px !important;
-            }
-
-            span,
-            h3 {
-                font-size: 9px !important;
-            }
-        }
-
-        .project-category ul {
-            top: unset !important;
-            bottom: 10px !important;
-        }
-
-        #form-orcamento {
-
-            select,
-            input,
-            textarea {
-                font-size: 13px;
-            }
         }
     }
+
+    .post-top {
+
+        .post-categories,
+        .post-cliente {
+            gap: 5px !important;
+            padding: 10px !important;
+        }
+
+        span,
+        h3 {
+            font-size: 9px !important;
+        }
+    }
+
+    .project-category ul {
+        top: unset !important;
+        bottom: 10px !important;
+    }
+
+    #form-orcamento {
+
+        select,
+        input,
+        textarea {
+            font-size: 13px;
+        }
+    }
+}

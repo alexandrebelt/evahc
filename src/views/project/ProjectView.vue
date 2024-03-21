@@ -5,7 +5,7 @@
                 <div class="post-top">
                     <div class="post-cliente post-top-col">
                         <span>Cliente</span>
-                        <h3>{{ proj.title.rendered }}</h3>
+                        <h3 v-html="proj.title.rendered"></h3>
                     </div>
                     <div class="post-categories post-top-col">
                         <h3 v-for="categoryId in proj.categories" :key="categoryId">
@@ -18,8 +18,8 @@
                     :src="proj['_embedded']['wp:featuredmedia'][0].source_url" :alt="proj.title.rendered + '_thumb'">
                 <div class="proj-content">
                     <div class="wp-block-column data-proj">
-                        <h2>{{ proj.title.rendered }}</h2>
-                        <em>"A matéria-prima da sua imaginação"
+                        <h2 v-html="proj.title.rendered"></h2>
+                        <em v-html="proj.excerpt.rendered">
                         </em>
                         <p>{{ loadDate(proj.date) }}</p>
                     </div>
@@ -32,7 +32,7 @@
     <div v-else>
         <section>
             <div class="container limit">
-                <h1>Projeto não encontrado</h1>
+                <h1>...</h1>
             </div>
         </section>
     </div>
@@ -41,8 +41,9 @@
 <script>
 import axios from 'axios';
 import gsap from 'gsap';
+import { mapMutations } from 'vuex';
 export default {
-    props: ['projectId', 'projectName'],
+    props: ['projectSlug', 'projectName'],
     data() {
         return {
             proj: null,
@@ -59,7 +60,7 @@ export default {
             return `${mes}` + "/" + `${ano}`;
         },
         loadCategories() {
-            axios.get('https://evahc.com.br/wp-json/wp/v2/categories')
+            axios.get('https://gerenciamento.evahc.com.br/wp-json/wp/v2/categories')
                 .then((response) => {
                     response.data.forEach((category) => {
                         this.categories[category.id] = category.name;
@@ -74,10 +75,11 @@ export default {
         },
     },
     created() {
-        axios.get(`https://evahc.com.br/wp-json/wp/v2/posts?slug=${this.projectName}&_embed`)
+        axios.get(`https://gerenciamento.evahc.com.br/wp-json/wp/v2/posts?slug=${this.projectSlug}&_embed`)
             .then((response) => {
                 this.proj = response.data[0]
                 this.loadCategories()
+                
             }).then(() => {
                 let dataProj = document.querySelector(".data-proj");
                 let dataPai = document.querySelector(".wp-block-columns");

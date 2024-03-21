@@ -14,12 +14,16 @@
     justify-content: space-between;
 }
 
+.projects-individual.proj-ind{
+    transition: opacity 1s !important;
+  &:hover {
+    opacity: 0.6 !important;}
+  }
 #portfolio .projects-individual {
     aspect-ratio: 3/2;
     flex-basis: calc(50% - 10px);
     position: relative;
     height: 100%;
-
     .project-tag {
         position: absolute;
         top: 30px;

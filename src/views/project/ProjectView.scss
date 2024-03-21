@@ -72,6 +72,11 @@
         }
 
         &.is-layout-flex {
+            @media(max-width:1500px){
+                .wp-block-column {
+                    width: 33.33%;
+                  }
+            }
             display: flex;
             gap: 40px;
             justify-content: space-between;
@@ -129,11 +134,16 @@
     em {
         font-size: 23px;
         font-weight: 300;
-
-        &:before,
+        display: inline-flex;
+        p{
+            margin: 0;
+            line-height: 1.5em;
+            &:before,
         &:after {
             content: '"';
         }
+        }
+        
     }
 
     p {

@@ -31,13 +31,10 @@ const routes: Array<RouteRecordRaw> = [
     component: AboutView
   },
   {
-    path: '/portfolio/:projectName',
+    path: `/portfolio/:projectSlug`,
     name: 'Project',
     component: ProjectView,
-
-    props: route => ({
-      projectName: route.params.projectName,
-    })
+    props: true
   }
 
 
