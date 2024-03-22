@@ -69,7 +69,9 @@ export default defineComponent({
     }, 1000);
 
     window.addEventListener('load', () => {
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
     });
 
   },
