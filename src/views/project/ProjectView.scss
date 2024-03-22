@@ -125,7 +125,7 @@
     width: 30%;
 
     h2 {
-        text-transform: lowercase;
+        //text-transform: lowercase;
         margin-bottom: 20px;
 
         &:first-letter {
@@ -149,7 +149,7 @@
     }
 
     p {
-        text-transform: capitalize;
+       // text-transform: capitalize;
         margin-top: 40px;
         font-weight: 300;
         font-size: 23px;

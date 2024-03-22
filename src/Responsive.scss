@@ -52,6 +52,19 @@
             margin-top: 10px;
         }
     }
+
+    .projects-individual {
+        .portfolio-categories {
+            top: unset !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            font-size: 11px !important;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+        }
+    }
 }
 
 @media(max-width:1050px) {
@@ -103,7 +116,7 @@
         .metodologia-descricao {
             font-size: 1.5vw;
         }
-        
+
     }
 }
 
@@ -314,16 +327,7 @@
         flex-basis: 100% !important;
         width: 100%;
 
-        .portfolio-categories {
-            top: unset !important;
-            bottom: 20px !important;
-            right: 20px !important;
-            font-size: 11px !important;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
 
-        }
 
         .project-tag {
             font-size: 11px !important;

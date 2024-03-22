@@ -12,6 +12,7 @@
                 <div class="mobile-menu-content">
                     <h5>Navegação</h5>
                     <div class="links-menu-mobile">
+                        <router-link class="mobile-links btn-action" to="/">Home</router-link>
                         <router-link class="mobile-links btn-action" to="/portfolio">Portfólio</router-link>
                         <router-link class="mobile-links btn-action" to="/sobre-nos">Sobre nós</router-link>
                         <router-link class="mobile-links btn-action" to="/orcamento">Orçamento</router-link>
@@ -238,7 +239,7 @@ export default {
 
         a {
             margin-right: auto;
-            font-weight: 500;
+            font-weight: 400;
             font-family: var(--overused);
         }
 

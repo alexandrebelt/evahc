@@ -5,11 +5,11 @@
                 <router-link :to="{
                 name: 'Project', params: {
                     projectSlug: proj.slug,
-                    projectName: proj.title.rendered 
+                    projectName: proj.title.rendered
                 }
             }" @click="$store.commit('setProjectName', proj.title.rendered)">
                     <div class="project-tags">
-                        <h3 v-html="proj.title.rendered"></h3>
+                        <h3 style="width: fit-content !important;" v-html="proj.title.rendered"></h3>
                         <h3 v-for="tagId in proj.tags" :key="tagId">{{ getTagName(tagId) }}</h3>
                     </div>
                     <div class="project-category">
@@ -106,39 +106,32 @@ export default {
 
         .project-tags {
             position: absolute;
-            top: 20px;
-            filter: invert(1);
-            mix-blend-mode: exclusion;
-        }
-
-        .project-tags {
-            position: absolute;
-            top: 30px !important;
-            left: 30px !important;
-            font-size: 13px;
             display: flex;
             flex-direction: row;
-            gap: 30px;
-            filter: invert(1);
-            mix-blend-mode: exclusion;
+            top: 30px !important;
+            left: 30px !important;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 13px;
+            gap:20px;
+            color: var(--branco);
+            border-radius: 50px;
+            padding: 5px 20px;
 
             h3 {
-                text-transform: lowercase;
-
+                display:flex;
                 &:first-letter {
                     text-transform: uppercase;
                 }
+
+                &:nth-of-type(1) {
+                    font-weight: 600;
+                }
+
+                &:nth-of-type(2) {
+                    text-align: right;
+                    font-weight: 400;
+                }
             }
-
-            :nth-of-type(1) {
-                font-weight: 600;
-            }
-
-            :nth-of-type(2) {
-                font-weight: 400;
-            }
-
-
         }
 
         img {

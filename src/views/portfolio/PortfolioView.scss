@@ -14,26 +14,36 @@
     justify-content: space-between;
 }
 
-.projects-individual.proj-ind{
+.projects-individual.proj-ind {
     transition: opacity 1s !important;
-  &:hover {
-    opacity: 0.6 !important;}
-  }
+
+    &:hover {
+        opacity: 0.6 !important;
+    }
+}
+
 #portfolio .projects-individual {
     aspect-ratio: 3/2;
     flex-basis: calc(50% - 10px);
     position: relative;
     height: 100%;
+
     .project-tag {
         position: absolute;
+        display: flex;
+        flex-direction: row;
         top: 30px;
         left: 30px;
         font-size: 12px;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        filter: invert(1);
-        mix-blend-mode: exclusion;
+        gap:10px;
+        background: rgba(0, 0, 0, 0.2);
+        font-size: 11px;
+        color: var(--branco);
+        border-radius: 50px;
+        padding: 5px 20px;
+
+        //filter: invert(1);
+        //mix-blend-mode: exclusion;
 
         h3 {
             &:nth-of-type(1) {
