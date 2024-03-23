@@ -52,6 +52,8 @@ export function initScrollLetters() {
 }
 
 export function configGsap() {
+  var credit = document.querySelector('#credits');
+
   gsap.killTweensOf('.btn-orcamento')
   gsap.registerPlugin(ScrollTrigger);
   // Pausa o ScrollTrigger existente
@@ -62,6 +64,12 @@ export function configGsap() {
   }, 1200);
 
   /*FOOTER*/
+  credit.addEventListener('mouseover', ()=>{
+    gsap.to('#credits h6', {y: -18, duration: 0.5, ease:"power2.out"})
+  })
+  credit.addEventListener('mouseleave', ()=>{
+    gsap.to('#credits h6', {y: -1, duration: 0.5, ease:"power2.out"})
+  })
 
   if (window.innerWidth <= 750) {
     gsap.to(".btn-orcamento", {
@@ -104,6 +112,8 @@ export function configGsap() {
       end: "bottom center",
     }
   })
+
+
 }
 
 export function initGsap() {

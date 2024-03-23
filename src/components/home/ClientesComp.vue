@@ -79,8 +79,8 @@ export default {
             });
         })
 
-        this.deps = document.querySelector('.depoimentos');
         setTimeout(() => {
+            this.deps = document.querySelector('.depoimentos');
             const tween = gsap.to(this.deps, {
                 x: this.getScrollAmount(),
                 duration: 3,
@@ -106,7 +106,7 @@ export default {
                 }
             })
 
-        }, 1000);
+        }, 2000);
     }
 }
 </script>

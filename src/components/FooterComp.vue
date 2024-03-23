@@ -18,7 +18,7 @@
                     <a class="magnetic-small" href="mailto:contato@evahc.com.br" target="_blank">
                         contato@evahc.com.br
                     </a>
-                    <a class="magnetic-small" href="https://wa.me/557998562987" target="_blank">+55 (79) 99856-2987</a> 
+                    <a class="magnetic-small" href="https://wa.me/557998562987" target="_blank">+55 (79) 99856-2987</a>
                 </div>
             </div>
             <div class="credits-social">
@@ -40,6 +40,19 @@
                     </div>
                 </div>
             </div>
+
+            <div id="credits">
+                <a href="http://portfolio.alexandrebeltramini.com.br/">
+                    <div class="credits-wrapper">
+                        <h6>
+                            Code by AB
+                        </h6>
+                        <h6>
+                            Code by AB
+                        </h6>
+                    </div>
+                </a>
+            </div>
         </div>
     </footer>
 </template>
@@ -55,6 +68,7 @@ export default {
         }
     },
     mounted() {
+
         var magnets = document.querySelectorAll('.magnetic')
         var strength = 50
         var textStrength = 30
@@ -101,4 +115,19 @@ export default {
 
 <style lang="scss">
 @import "FooterComp.scss";
+
+#credits {
+    cursor: pointer;
+    width: fit-content;
+
+    .credits-wrapper {
+        height: 15px;
+        overflow: hidden;
+
+        h6 {
+            display: flex;
+            line-height: 1.4em
+        }
+    }
+}
 </style>

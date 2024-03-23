@@ -40,7 +40,7 @@ import ProjsComp from '@/components/home/ProjsComp.vue';
 import MetodologiaComp from '@/components/home/MetodologiaComp.vue';
 import ClientesComp from '@/components/home/ClientesComp.vue';
 import FaqComp from '@/components/home/FaqComp.vue';
-import { initGsap, initScrollLetters } from '@/utils/gsapAll';
+import { configGsap, initGsap, initScrollLetters } from '@/utils/gsapAll';
 
 gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline()
@@ -60,6 +60,10 @@ export default defineComponent({
   mounted() {
     //window.removeEventListener('resize', initGsap())
     //initGsap()
+
+    setTimeout(() => {
+      configGsap()
+    }, 1500);
 
     if (!this.scrollLetterInitialized) {
       initScrollLetters();
