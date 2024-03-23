@@ -190,6 +190,13 @@
         font-size: 125px !important;
     }
 
+    /*projects*/
+    .project-tags {
+        flex-direction: column !important;
+        flex-wrap: wrap;
+        gap: 0px !important;
+    }
+
 
     /*metodologia*/
     #metodologia h2 {
@@ -403,7 +410,8 @@
             font-size: 13px;
         }
     }
+
     #credits {
         margin: 0 auto;
-      }
+    }
 }
