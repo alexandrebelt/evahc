@@ -127,7 +127,7 @@
         margin-bottom: 0px !important;
     }
 
-    h2, 
+    h2,
     .servicos h2 {
         font-size: 36px !important;
     }
@@ -208,6 +208,7 @@
     }
 
     .project-category {
+
 
         ul {
             top: unset !important;
@@ -348,6 +349,11 @@
     }
 
     /*PROJECTS*/
+    .portfolio-categories {
+        flex-direction: column !important;
+        gap: 4px !important;
+    }
+
     .portfolio-projects {
         display: flex;
         flex-wrap: wrap;
@@ -355,7 +361,7 @@
     }
 
     #portfolio .projects-individual {
-        aspect-ratio: 10/5 !important;
+        aspect-ratio: 10/8 !important;
         flex-basis: 100% !important;
         width: 100%;
 
