@@ -159,6 +159,7 @@ export default {
                 list-style: none;
                 padding: 5px 10px;
                 border-radius: 20px;
+                font-weight: 500;
             }
         }
     }

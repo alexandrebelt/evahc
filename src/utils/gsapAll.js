@@ -65,10 +65,10 @@ export function configGsap() {
 
   /*FOOTER*/
   credit.addEventListener('mouseover', ()=>{
-    gsap.to('#credits h6', {y: -18, duration: 0.5, ease:"power2.out"})
+    gsap.to('#credits h6', {y: -18, duration: 0.8, ease:"power4.out"})
   })
   credit.addEventListener('mouseleave', ()=>{
-    gsap.to('#credits h6', {y: -1, duration: 0.5, ease:"power2.out"})
+    gsap.to('#credits h6', {y: -1, duration: 0.8, ease:"power4.out"})
   })
 
   if (window.innerWidth <= 750) {

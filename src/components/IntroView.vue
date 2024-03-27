@@ -66,7 +66,7 @@ export default {
         font-family: var(--overused) !important;
         font-size: 48px;
         text-align: center;
-        font-weight: 500;
+        font-weight: 400;
 
         span sup {
             font-size: 25px;
