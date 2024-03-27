@@ -132,6 +132,14 @@
         font-size: 36px !important;
     }
 
+    .servicos {
+        padding: 0;
+    }
+
+    #sobre-banner {
+        padding-bottom: 40px;
+    }
+
     .seta-diagonal {
         max-width: 24px !important;
     }
@@ -441,5 +449,19 @@
 
     #credits {
         margin: 0 auto;
+    }
+}
+
+@media(max-width: 550px) {
+    .post-top {
+        flex-direction: column !important;
+
+        .post-categories.post-top-col {
+            padding-top: 0 !important;
+
+            h3 {
+                font-size: 7px !important;
+            }
+        }
     }
 }
