@@ -106,7 +106,7 @@
 
 .select2.select2-container {
     width: 100% !important;
-  }
+}
 
 .selection:focus-visible {
     outline: 0 !important;
@@ -150,9 +150,15 @@
 .select2-results__option.select2-results__option--disabled {
     color: var(--cinza-claro) !important;
 }
-.select2-container--classic .select2-results__option--highlighted.select2-results__option--selectable{
+
+.select2-container--classic .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: var(--preto);
 }
+
 .select2-selection.select2-selection span {
     color: var(--cinza) !important;
-  }
+}
+
+.select2-selection__rendered {
+    padding: 0 !important;
+}
