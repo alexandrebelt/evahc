@@ -202,6 +202,9 @@ export default {
 .mobile-menu-content {
     margin: auto auto !important;
     width: 90%;
+    h5{
+        padding-top:15px;
+    }
 }
 
 .container-menu-mobile {

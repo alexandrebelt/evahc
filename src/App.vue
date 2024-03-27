@@ -28,7 +28,7 @@ import HeaderComp from '/src/components/HeaderComp.vue';
 import IntroView from '/src/components/IntroView.vue';
 import TransitionView from '/src/components/TransitionView.vue';
 import LoadingView from '/src/components/LoadingView.vue';
-import { defineComponent, inject, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { initMagnets } from './utils/magneticElements.js';

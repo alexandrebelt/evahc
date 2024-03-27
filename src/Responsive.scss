@@ -127,6 +127,15 @@
         margin-bottom: 0px !important;
     }
 
+    h2, 
+    .servicos h2 {
+        font-size: 36px !important;
+    }
+
+    .seta-diagonal {
+        max-width: 24px !important;
+    }
+
     /*HEADER*/
     nav {
         span {
@@ -195,8 +204,24 @@
         flex-direction: column !important;
         flex-wrap: wrap;
         gap: 0px !important;
+        left: 10px !important;
     }
 
+    .project-category {
+
+        ul {
+            top: unset !important;
+            bottom: 10px !important;
+            right: 10px !important;
+            flex-direction: column !important;
+            gap: 4px !important;
+
+            li {
+                font-size: 10px;
+            }
+        }
+
+    }
 
     /*metodologia*/
     #metodologia h2 {
@@ -397,10 +422,7 @@
         }
     }
 
-    .project-category ul {
-        top: unset !important;
-        bottom: 10px !important;
-    }
+
 
     #form-orcamento {
 

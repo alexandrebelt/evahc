@@ -109,7 +109,7 @@ export default {
             display: flex;
             flex-direction: row;
             top: 30px !important;
-            left: 30px !important;
+            left: 30px;
             background: rgba(0, 0, 0, 0.2);
             font-size: 13px;
             gap:20px;

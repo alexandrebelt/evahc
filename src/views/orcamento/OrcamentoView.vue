@@ -16,7 +16,7 @@
             <input name="email" required type="email" placeholder="Seu e-mail *" />
             <input name="tel" required class="numeric" type="tel" placeholder="Seu WhatsApp com DDD? *" />
             <input name="empresa" type="text" placeholder="Nome da empresa (Se houver)" />
-            <select required id="inpi" name="inpi">
+            <select class="select-box" required id="inpi" name="inpi">
                 <option value="" selected disabled hidden> Você sabe se o nome da empresa está disponível para registro
                     no
                     INPI dentro do seu segmento? *</option>
@@ -28,7 +28,7 @@
                 <option value="Não tenho certeza da disponibilidade">Não tenho certeza da disponibilidade.</option>
                 <option value="Não sei nada sobre marcas">Não sei nada sobre registro de marcas.</option>
             </select>
-            <select required id="momento-da-empresa" name="momento-da-empresa">
+            <select class="select-box" required id="momento-da-empresa" name="momento-da-empresa">
                 <option value="" selected disabled hidden>Em qual momento a empresa se encontra hoje? *</option>
                 <option value="Começando do zero">Estou começando do zero.</option>
                 <option value="Em expansão">Em fase de expansão, precisando de uma estruturação de marca e comunicação
@@ -36,7 +36,7 @@
                 <option value="Consolidada">A empresa já é consolidada, mas está em fase de mudanças para se adequar ao
                     mercado de trabalho atual.</option>
             </select>
-            <select required id="orcamento-de-projeto" name="orcamento-de-projeto">
+            <select class="select-box" required id="orcamento-de-projeto" name="orcamento-de-projeto">
                 <option value="" selected disabled hidden>Qual é a sua estimativa de investimento para este projeto? *
                 </option>
                 <option value="5 mil a 6 mil">5 mil a 6 mil</option>
@@ -44,7 +44,7 @@
                 <option value="9 mil a 10 mil">9 mil a 10 mil</option>
                 <option value="A partir de 10 mil">A partir de 10 mil</option>
             </select>
-            <select required id="porte-da-empresa" name="porte-da-empresa">
+            <select class="select-box" required id="porte-da-empresa" name="porte-da-empresa">
                 <option value="" selected disabled hidden>Qual o porte da empresa? *</option>
                 <option value="MEI"> MEI (Micro Empreendedor Individual) </option>
                 <option value="2 a 5 funcionários">2 a 5 funcionários</option>
@@ -57,13 +57,13 @@
                 placeholder="Conte-nos mais detalhes sobre sua empresa *"></textarea>
             <input name="social" type="text"
                 placeholder="Caso sua empresa já possua site e/ou redes sociais, nos informe aqui , por gentileza" />
-            <select required id="urgencia-para-inicio" name="urgencia-para-inicio">
+            <select class="select-box" required id="urgencia-para-inicio" name="urgencia-para-inicio">
                 <option value="" selected disabled hidden>Qual o nível de urgência para o ínicio do projeto? *</option>
                 <option value="Pouca">Pouca</option>
                 <option value="Razoável">Razoável</option>
                 <option value="Imediata">Imediata</option>
             </select>
-            <select required id="onde-nos-encontrou" name="onde-nos-encontrou">
+            <select class="select-box" required id="onde-nos-encontrou" name="onde-nos-encontrou">
                 <option value="" selected disabled hidden>Onde você nos encontrou? *</option>
                 <option value="Google">Google</option>
                 <option value="Instagram">Instagram</option>
@@ -88,6 +88,8 @@ import { defineComponent } from 'vue';
 import { initMagnets } from '@/utils/magneticElements';
 import gsap from 'gsap';
 import emailjs from "@emailjs/browser"
+import 'select2/dist/css/select2.min.css';
+import 'select2/dist/js/select2.full.min.js';
 
 export default defineComponent({
     data() {
@@ -135,7 +137,11 @@ export default defineComponent({
         }
     },
     mounted() {
-
+        $(document).ready(function () {
+            $('.select-box').select2({
+                theme: 'classic' // Use o tema clássico para personalizar facilmente
+            });
+        });
         setTimeout(() => {
             initMagnets()
         }, 500)
