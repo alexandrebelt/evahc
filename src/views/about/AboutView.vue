@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="sobre-banner-col">
-        <img src="imgs/foto-evahc-sobre.png" alt="foto-sobre">
+        <img src="https://gerenciamento.evahc.com.br/wp-content/uploads/2024/03/foto-evahc-sobre.png" alt="foto-sobre">
       </div>
     </div>
   </section>
