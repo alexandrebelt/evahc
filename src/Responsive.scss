@@ -133,7 +133,7 @@
     }
 
     .servicos {
-        padding: 0;
+        padding: 0 !important;
     }
 
     #sobre-banner {
@@ -206,6 +206,10 @@
     #home-banner h1 {
         font-size: 125px !important;
     }
+    .banner-p-text p {
+        margin-top: 30px;
+        scale: 0.8 
+      }
 
     /*projects*/
     .project-tags {
@@ -299,6 +303,12 @@
         .cliente-depoimento {
             justify-content: center;
             display: flex;
+        }
+
+        .cliente-empresa {
+            img {
+                max-width: 11px !important;
+            }
         }
 
     }

@@ -4,6 +4,9 @@
         color: var(--preto) !important;
     }
     animation: transitionHeader 2s ease !important;
+    .mobile-spans span{
+        background-color:var(--preto)
+      }
 }
 
 .btn-header-orcamento {

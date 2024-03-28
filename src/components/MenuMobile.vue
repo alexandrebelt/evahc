@@ -3,9 +3,10 @@
         <div class="menu-mobile">
 
             <div id="mobile-btn" :class="{ 'router-color': isHome }" class="btn-action">
-                <span :class="{ 'open-mobile-menu': mostraMenu }">
-                    Menu
-                </span>
+                <div class="mobile-spans" :class="{ 'open-mobile-menu': mostraMenu }">
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <div :on-click="mostraMenu" class="container-menu-mobile">
@@ -80,8 +81,8 @@ export default {
                 end: "+=200"
             }
         })
-        mobileLinks.forEach((mobileLink)=>{
-            mobileLink.addEventListener('click', ()=>{
+        mobileLinks.forEach((mobileLink) => {
+            mobileLink.addEventListener('click', () => {
                 gsap.to('.btn-menu-scroll', { y: -200 })
             })
         })
@@ -105,7 +106,7 @@ export default {
                     })
                     btnScroll.classList.remove('active-menu')
                     this.mostraMenu = false;
-                     
+
 
                 } else {
                     btnScroll.classList.add('active-menu')
@@ -171,6 +172,7 @@ export default {
     }
 
 }
+
 .active-menu {
     transform: none !important;
 
@@ -202,8 +204,9 @@ export default {
 .mobile-menu-content {
     margin: auto auto !important;
     width: 90%;
-    h5{
-        padding-top:15px;
+
+    h5 {
+        padding-top: 15px;
     }
 }
 
@@ -253,6 +256,21 @@ export default {
 
             }
         }
+    }
+}
+
+
+.mobile-spans {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    margin-top: 5px;
+
+    span {
+        background: var(--branco);
+        width: 25px;
+        height: 3px;
     }
 }
 </style>
