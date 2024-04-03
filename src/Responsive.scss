@@ -203,13 +203,29 @@
 
     /*HOME*/
     /*banners*/
+    
     #home-banner h1 {
         font-size: 125px !important;
     }
+
     .banner-p-text p {
         margin-top: 30px;
-        scale: 0.8 
-      }
+        scale: 0.8
+    }
+    #home-projs {
+
+        height: 100vh;
+        min-height: 1800px !important;
+        max-height: 1800px !important;
+        background-color: var(--branco);
+        z-index: 999;
+
+        .project-cover {
+            height: 50vh;
+            width: 100%;
+
+        }
+    }
 
     /*projects*/
     .project-tags {
@@ -459,6 +475,11 @@
 
     #credits {
         margin: 0 auto;
+    }
+
+    .project-category,
+    .portfolio-categories {
+        display: none !important;
     }
 }
 
