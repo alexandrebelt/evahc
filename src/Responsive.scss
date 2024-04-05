@@ -203,7 +203,7 @@
 
     /*HOME*/
     /*banners*/
-    
+
     #home-banner h1 {
         font-size: 125px !important;
     }
@@ -212,6 +212,7 @@
         margin-top: 30px;
         scale: 0.8
     }
+
     #home-projs {
 
         height: 100vh;
@@ -449,7 +450,12 @@
         }
     }
 
+    .individual-project-cover {
+        aspect-ratio: 5/4 !important;
+    }
+
     .post-top {
+
 
         .post-categories,
         .post-cliente {
