@@ -108,7 +108,7 @@ export default {
             position: absolute;
             display: flex;
             flex-direction: row;
-            top: 30px !important;
+            top: 30px;
             left: 30px;
             background: rgba(0, 0, 0, 0.2);
             font-size: 13px;
