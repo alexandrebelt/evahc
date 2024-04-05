@@ -103,7 +103,7 @@ export default {
                     scrollTrigger: {
                         trigger: dataPai,
                         scrub: 2,
-                        start: "70% bottom",
+                        start: "50% bottom",
                         end: "center center",
                     }
                 })
